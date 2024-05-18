@@ -25,7 +25,7 @@ export async function fetchUser(userId: string) {
         return await user.populate({
           path: "communities",
           model: Community,
-        }).execPopulate();
+        });
       } else {
         console.warn('Community collection does not exist yet. Communities will not be populated.');
         return user;
