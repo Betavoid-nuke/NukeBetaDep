@@ -6,13 +6,13 @@ import Topbar from "@/components/shared/Topbar";
 import Leftsidebar from "@/components/shared/Leftsidebar";
 import Rightsidebar from "@/components/shared/Rightsidebar";
 import Bottombar from "@/components/shared/Bottombar";
-// import { Toaster } from "@/components/ui/toaster";
 import { Dialog } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 import React, { useState } from "react";
 import ChatinputFooter from "@/components/chatinputfooter/ChatinputFooter";
 import NextTopLoader from 'nextjs-toploader';
 import { Toaster } from "@/components/ui/sonner";
+import { useUser } from '@clerk/clerk-react';
 
 
 interface Props {
@@ -33,6 +33,12 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+
+  //check if the user logged in or not
+  const { user } = useUser();
+  if (user) {
+    console.warn('user is not loggedin');
+  }
 
   return (
     <ClerkProvider>
