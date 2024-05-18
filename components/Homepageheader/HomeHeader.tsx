@@ -18,11 +18,25 @@ import NewProject from "@/components/forms/NewProject";
 import { fetchUser } from "@/lib/actions/user.action";
 import { Button } from "@/components/ui/button";
 import PostThread from "../forms/postThread";
+import { redirect } from "next/navigation";
 
 async function HomeHeader() {
   const result = await fetchProject(1, 30); //1 is the page number, and 30 is how many posts to display
   const user = await currentUser();
   if (!user) return null; // to avoid typescript warnings
+
+
+  
+
+  //if they did not onboarded but signed in / signedup, this will take them to onboarding page
+  const user2 = await currentUser();
+  if (!user2) return null;
+
+  const userInfo2 = await fetchUser(user.id);
+  if (!userInfo2?.onboarded) redirect("/onboarding");
+
+
+
 
   const userInfo = await fetchUser(user.id);
 

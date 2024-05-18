@@ -1,10 +1,11 @@
 "use client"
 
-import { SignOutButton, SignedIn } from "@clerk/nextjs"
+import { SignOutButton, SignedIn, currentUser } from "@clerk/nextjs"
 import { sidebarLinks } from "@/constants"
 import Image from "next/image"
 import Link from "next/link"
-import { usePathname, useRouter } from 'next/navigation'
+import { redirect, usePathname, useRouter } from 'next/navigation'
+import { fetchUser } from "@/lib/actions/user.action"
 
 function Leftsidebar() {
 
