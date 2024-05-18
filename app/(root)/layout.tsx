@@ -34,11 +34,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
 
-  //check if the user logged in or not
-  const { user } = useUser();
-  if (user) {
-    console.warn('user is not loggedin');
+  try {
+    //check if the user logged in or not
+    const { user } = useUser();
+    if (user) {
+      console.warn('user is not loggedin');
+    }
+  } catch (error) {
+    console.warn(error)
   }
+  
 
   return (
     <ClerkProvider>
