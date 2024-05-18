@@ -29,11 +29,8 @@ async function HomeHeader() {
   
 
   //if they did not onboarded but signed in / signedup, this will take them to onboarding page
-  const user2 = await currentUser();
-  if (!user2) return null;
-
-  const userInfo2 = await fetchUser(user.id);
-  if (!userInfo2?.onboarded) redirect("/onboarding");
+  // const userInfo2 = await fetchUser(user.id);
+  // if (!userInfo2?.onboarded) redirect("/onboarding");
 
 
 

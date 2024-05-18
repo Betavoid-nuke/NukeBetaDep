@@ -7,10 +7,18 @@ import Link from "next/link"
 import { redirect, usePathname, useRouter } from 'next/navigation'
 import { fetchUser } from "@/lib/actions/user.action"
 
-function Leftsidebar() {
+async function Leftsidebar() {
 
     const router = useRouter();
     const pathname = usePathname();
+
+    //if they did not onboarded but signed in / signedup, this will take them to onboarding page
+    const user = await currentUser();
+    if (!user) redirect("/singup");
+    const userInfo2 = await fetchUser(user.id);
+    if (!userInfo2?.onboarded) redirect("/onboarding");
+
+
 
     return (
         <section className="custom-scrollbar leftsidebar">
