@@ -10,8 +10,6 @@ export default async function Home() {
   return (
     <>
 
-    <CheckLogin />
-
     <div style={{bottom:'auto', position:'fixed', display:'flex'}}>
       <div className="flex-col" style={{justifyContent:'center'}}>
         <HomeHeader />
