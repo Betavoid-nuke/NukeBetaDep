@@ -2,13 +2,16 @@ import HomeHeader from "@/components/Homepageheader/HomeHeader";
 import ThreadCard from "@/components/cards/ThreadCard";
 import { fetchPost } from "@/lib/actions/thread.actions";
 import { currentUser } from "@clerk/nextjs";
-
+import CheckLogin from "@/components/LoginCheck/CheckLogin";
 
 export default async function Home() {
   const result = await fetchPost(1, 30); //1 is the page number, and 30 is how many posts to display
   const user = await currentUser();
   return (
     <>
+
+    <CheckLogin />
+
     <div style={{bottom:'auto', position:'fixed', display:'flex'}}>
       <div className="flex-col" style={{justifyContent:'center'}}>
         <HomeHeader />
