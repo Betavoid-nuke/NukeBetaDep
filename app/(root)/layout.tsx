@@ -12,7 +12,6 @@ import React, { useState } from "react";
 import ChatinputFooter from "@/components/chatinputfooter/ChatinputFooter";
 import NextTopLoader from 'nextjs-toploader';
 import { Toaster } from "@/components/ui/sonner";
-import { useUser } from '@clerk/clerk-react';
 
 
 interface Props {
@@ -33,17 +32,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-
-  try {
-    //check if the user logged in or not
-    const { user } = useUser();
-    if (user) {
-      console.warn('user is not loggedin');
-    }
-  } catch (error) {
-    console.warn(error)
-  }
-  
 
   return (
     <ClerkProvider>
