@@ -12,6 +12,7 @@ import React, { useState } from "react";
 import ChatinputFooter from "@/components/chatinputfooter/ChatinputFooter";
 import NextTopLoader from 'nextjs-toploader';
 import { Toaster } from "@/components/ui/sonner";
+import CheckLogin from "@/components/LoginCheck/CheckLogin";
 
 
 interface Props {
@@ -55,6 +56,7 @@ export default function RootLayout({
           />
 
           <Topbar />
+          <CheckLogin />
 
           <main className="flex flex-row" id="mainscreen">
             <Leftsidebar />
