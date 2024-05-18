@@ -8,17 +8,34 @@ import Thread from "../models/thread.model";
 import User from "../models/user.model";
 
 import { connectToDB } from "../mongoose";
+import mongoose from 'mongoose';
 
 export async function fetchUser(userId: string) {
   try {
+
     connectToDB();
 
-    return await User.findOne({ id: userId }).populate({
-      path: "communities",
-      model: Community,
-    });
+    // Fetch the user
+    const user = await User.findOne({ id: userId });
+
+    // If the user exists, and the community collection exists, populate the communities field
+    if (user) {
+      const communityCollectionExists = await mongoose.connection.db.listCollections({ name: 'communities' }).hasNext();
+      if (communityCollectionExists) {
+        return await user.populate({
+          path: "communities",
+          model: Community,
+        }).execPopulate();
+      } else {
+        console.warn('Community collection does not exist yet. Communities will not be populated.');
+        return user;
+      }
+    } else {
+      console.warn('User not found.');
+    }
+
   } catch (error: any) {
-    throw new Error(`Failed to fetch user: ${error.message}`);
+    console.warn(`Failed to fetch user: ${error.message}`);
   }
 }
 
