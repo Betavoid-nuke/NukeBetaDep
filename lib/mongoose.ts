@@ -1,8 +1,10 @@
 import mongoose from "mongoose";
+import CheckLogin from "./Checklogin/CheckLogin";
 
 let isConnected = false; // Variable to track the connection status
 
 export const connectToDB = async () => {
+
   // Set strict query mode for Mongoose to prevent unknown field queries.
   mongoose.set("strictQuery", true);
 

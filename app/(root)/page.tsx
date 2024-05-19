@@ -1,12 +1,27 @@
 import HomeHeader from "@/components/Homepageheader/HomeHeader";
 import ThreadCard from "@/components/cards/ThreadCard";
 import { fetchPost } from "@/lib/actions/thread.actions";
+import { fetchUser } from "@/lib/actions/user.action";
 import { currentUser } from "@clerk/nextjs";
-import CheckLogin from "@/components/LoginCheck/CheckLogin";
+import { redirect } from "next/navigation";
 
 export default async function Home() {
   const result = await fetchPost(1, 30); //1 is the page number, and 30 is how many posts to display
+  
+  //checks if the user is logged in or not
   const user = await currentUser();
+  if (!user) {
+    redirect('/signin'); //Redirect to sign in page
+    return;
+  }
+
+  //checks if the user is onboarded or not
+  const userInfo = await fetchUser(user.id);
+  if (!userInfo?.onboarded) {
+    redirect('/onboarding'); // Redirect to onboarding page
+    return;
+  }
+
   return (
     <>
 
@@ -46,4 +61,5 @@ export default async function Home() {
     </main>
     </>
   )
+
 }
