@@ -14,7 +14,7 @@ async function Leftsidebar() {
 
     //if they did not onboarded but signed in / signedup, this will take them to onboarding page
     const user = await currentUser();
-    if (!user) redirect("/singup");
+    if (!user) redirect("/");
     const userInfo2 = await fetchUser(user.id);
     if (!userInfo2?.onboarded) redirect("/onboarding");
 
