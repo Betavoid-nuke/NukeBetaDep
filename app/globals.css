@@ -577,3 +577,19 @@
     background-position: 0% 50%;
   }
 }
+
+
+.transparentBG {
+
+  background-color: rgba(68, 68, 68, 0.24) !important;
+  @apply bg-glassmorphism p-4 backdrop-blur-lg xs:px-7;
+
+}
+
+.transparentBG2 {
+
+  background-color: rgba(0, 0, 0, 0.226) !important;
+  border-radius: 20px;
+  @apply bg-glassmorphism p-4 backdrop-blur-lg xs:px-7;
+
+}

@@ -163,7 +163,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
               <FormControl>
                 <Input
                   type='text'
-                  className='account-form_input no-focus'
+                  className='account-form_input no-focus transparentBG2'
                   {...field}
                 />
               </FormControl>
@@ -183,7 +183,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
               <FormControl>
                 <Input
                   type='text'
-                  className='account-form_input no-focus'
+                  className='account-form_input no-focus transparentBG2'
                   {...field}
                 />
               </FormControl>
@@ -203,7 +203,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
               <FormControl>
                 <Textarea
                   rows={10}
-                  className='account-form_input no-focus'
+                  className='account-form_input no-focus transparentBG2'
                   {...field}
                 />
               </FormControl>

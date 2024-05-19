@@ -1,5 +1,4 @@
 import { SignIn } from "@clerk/nextjs";
-// import { SignIn } from "../../../../public/assets/projectPoster2.jpg";
 
 export default function Page() {
     // background: `url('../../../../public/assets/projectPoster2.jpg') center/cover no-repeat`

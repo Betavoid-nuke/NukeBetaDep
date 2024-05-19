@@ -54,8 +54,6 @@ const NewProject = ({ user, btnTitle, isassemblychild, parentid }: Props) => {
     },
   });
 
-  console.log(parentid);
-
   const onSubmit = async (values: z.infer<typeof ProjectValidation>) => {
 
     await createProject({
