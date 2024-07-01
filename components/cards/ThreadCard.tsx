@@ -64,12 +64,15 @@ const ThreadCard = async ({
   likedBy
 }: Props) => { 
 
+  //gets current user
   const user = await currentUser();
   if(!user) return (null);
 
+  //gets data of the current user
   const userInfo = await fetchUser(user.id);
   if(!userInfo.onboarded) return(null);
 
+  //getting data of the person who made the post
   const owner = await fetchUser(author.id);
   if(!owner.onboarded) return(null);
 
@@ -85,13 +88,13 @@ const ThreadCard = async ({
   let printedlike = false;
   let postNotLikedBtThecurrentUser = true;
 
+  //this makes the profile photo big for the main post block and normal for the post block of the comment
   let ProfilePhotoDivStyle = {
     marginLeft:'-50px', 
     marginTop:'-50px', 
     width:'4rem', 
     height:'4rem'
   };
-
   if(isComment){
     ProfilePhotoDivStyle = {
       marginLeft:'0px', 
@@ -105,7 +108,7 @@ const ThreadCard = async ({
     <div>
 
       {!isComment && (
-        <AverageColorDiv src={author.image} />
+        <AverageColorDiv src={author.image} isCommentSection={isComment} />
       )}
 
       <article
@@ -122,8 +125,9 @@ const ThreadCard = async ({
           )}
 
           <div className="flex flex-col items-center">
+            
             {isInsideComment && (
-              <Link href={TheUrl} className="mb-5">
+              <Link href={TheUrl} className="mb-5" style={{marginLeft:'60px', marginTop:'5px'}}>
                 <Image
                   src="/assets/back.svg"
                   alt="back button"
@@ -142,22 +146,33 @@ const ThreadCard = async ({
                 className="cursor-pointer rounded-full"
               />
             </Link>
+
           </div>
 
           <div id="PostCotrolBar" className="flex w-full flex-col ml-4">
 
-            <Link href={`/profile/${author.id}`} className="w-fit">
-              <h4 className="cursor-pointer text-base-seminold text-light-1" style={{fontSize:'20px'}}>
-                {author.name}
-              </h4>
-            </Link>
+            
+            <div className="text-base-seminold text-light-1" style={{fontSize:'20px', display:'-webkit-inline-box', width:'100%'}}>
+              <p style={{display:'flex', width:'100%'}}>
+                
+                <Link href={`/profile/${author.id}`}>
+                  {author.name}
+                </Link>
+
+                {isComment && (
+                  <AverageColorDiv src={author.image} isCommentSection={isComment} />
+                )}
+
+              </p>
+            </div>
+            
 
             <Link href={`/thread/${id}`}>
-            <p className="mt-2 text-small-regular text-light-2">{content}</p>
+              <p className="mt-2 text-small-regular text-light-2">{content}</p>
             </Link>
 
             <div id="LikeBtn" className="flex gap-3.5 mt-4">
-              
+
               {likedBy.map((user1) =>
                 {
                   if (user1.valueOf() == userInfo?._id.valueOf()) {
@@ -259,12 +274,6 @@ const ThreadCard = async ({
           currentUserId={JSON.stringify(userInfo._id)}
           isComment={true}
         />
-        )}
-
-        {isComment && (
-        <div className="flex iteams-start justify-between">
-          <AccordionDemo PostId={id} />
-        </div>
         )}
 
       </article>

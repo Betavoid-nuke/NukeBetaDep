@@ -10,6 +10,7 @@ interface RGB {
 
 interface ImageProps {
   src: string;
+  isCommentSection?: boolean;
 }
 
 const getAverageRGB = (imgEl: HTMLImageElement): RGB => {
@@ -56,7 +57,7 @@ const getAverageRGB = (imgEl: HTMLImageElement): RGB => {
   return rgb;
 };
 
-const AverageColorDiv: React.FC<ImageProps> = ({ src }) => {
+const AverageColorDiv: React.FC<ImageProps> = ({ src, isCommentSection }) => {
   const [rgb, setRgb] = useState<RGB>({ r: 0, g: 0, b: 0 });
 
   useEffect(() => {
@@ -69,12 +70,32 @@ const AverageColorDiv: React.FC<ImageProps> = ({ src }) => {
     };
   }, [src]);
 
-  const divStyle = {
+  //based on weather we are printing this div on the comment or the main post, we will have to change the style of it, so it fits perfectly
+  
+  let divStyle = {
     width: '1200px',
     height: '1px',
     marginBottom:'1px',
+    marginLeft:'0px',
+    marginRight:'0px',
+    marginTop:'0px',
+    opacity: '100%',
     backgroundColor: `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`
   };
+
+  if(isCommentSection) {
+    divStyle = {
+      width: '100%',
+      height: '1px',
+      marginBottom:'1px',
+      marginLeft:'15px',
+      marginRight:'10px',
+      marginTop:'14px',
+      opacity: '40%',
+      backgroundColor: `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`
+    };
+  }
+
   return <div style={divStyle}></div>;
 };
 
