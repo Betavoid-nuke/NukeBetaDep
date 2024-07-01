@@ -86,7 +86,7 @@ const ThreadCard = async ({
 
   return (
     <article
-      className={`flex w-full flex-col rounded-xl ${isComment ? "px-0 xs:px-7 mb-10" : "bg-dark-2 p-7"} ${isInsideAccord ? "ml-5" : "ml-0"}`}
+      className={`flex w-full flex-col rounded-xl ${isComment ? "px-0 xs:px-7 mb-2" : "bg-dark-2 p-7 pb-2"} ${isInsideAccord ? "ml-5" : "ml-0"}`}
     >
       <div className="flex iteams-start justify-between">
         <div className="flex w-full flex-1 flex-row gap4">
@@ -134,8 +134,6 @@ const ThreadCard = async ({
 
             <div id="LikeBtn" className="flex gap-3.5 mt-4">
               
-
-              
               {likedBy.map((user1) =>
                 {
                   if (user1.valueOf() == userInfo?._id.valueOf()) {
@@ -153,22 +151,9 @@ const ThreadCard = async ({
                   }
                 })
               }
-
               {postNotLikedBtThecurrentUser && (
                 <Likebtn howmanylikes={likedBy.length} liked={false} threadId={id} userId={userInfo._id} likedBy={{id:""}} owner={owner?._id.valueOf()}/>
               )}
-
-
-
-              <Link href={`/thread/${id}`}>
-                <Image
-                  src="/assets/reply.svg"
-                  alt="comment"
-                  width={24}
-                  height={24}
-                  className="cursor-pointer object-contain"
-                />
-              </Link>
 
               <Image
                 src="/assets/repost.svg"
@@ -189,6 +174,11 @@ const ThreadCard = async ({
               )}
 
             </div>
+
+            <div style={{marginBottom:'0px', marginTop:'2px'}} className="flex iteams-start justify-between">
+              <AccordionDemo PostId={id} />
+            </div>
+
           </div>
 
           {!isComment && (
@@ -251,8 +241,7 @@ const ThreadCard = async ({
           <AccordionDemo PostId={id} />
         </div>
       )}
-
-      {isComment && <div className="mb-10" />}
+      
     </article>
   );
 
