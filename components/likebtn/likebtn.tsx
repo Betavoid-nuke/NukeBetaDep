@@ -21,7 +21,6 @@ interface Props {
 const Likebtn = ({threadId, userId, likedBy, owner, liked, howmanylikes}: Props) => {
 
   let likedthepost = false;
-
   function likeunlike(){
 
     //unlike the post

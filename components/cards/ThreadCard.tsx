@@ -119,7 +119,8 @@ const ThreadCard = async ({
             </Link>
           </div>
 
-          <div className="flex w-full flex-col ml-4">
+          <div id="PostCotrolBar" className="flex w-full flex-col ml-4">
+
             <Link href={`/profile/${author.id}`} className="w-fit">
               <h4 className="cursor-pointer text-base-seminold text-light-1">
                 {author.name}
@@ -130,19 +131,15 @@ const ThreadCard = async ({
             <p className="mt-2 text-small-regular text-light-2">{content}</p>
             </Link>
 
-            <div className="flex gap-3.5 mt-4">
-
-
-
+            <div id="LikeBtn" className="flex gap-3.5 mt-4">
 
 
 
               {likedBy.map((user1) =>
-
                 {
-
+                  console.log(owner?._id.valueOf());
+                  console.log(user1.valueOf());
                   if (user1.valueOf() == owner?._id.valueOf()) {
-
                     return (
                       <Likebtn
                         threadId={id}
@@ -153,19 +150,13 @@ const ThreadCard = async ({
                         howmanylikes={likedBy.length}
                       />
                     );
-
                   }
-
                 })
-
               }
 
               {likedBy.length == 0 && (
                 <Likebtn howmanylikes={likedBy.length} liked={false} threadId={id} userId={userInfo._id} likedBy={{id:""}} owner={owner?._id.valueOf()}/>
               )}
-
-
-
 
 
 
@@ -198,8 +189,6 @@ const ThreadCard = async ({
               )}
 
             </div>
-            
-
           </div>
 
           {!isComment && (
