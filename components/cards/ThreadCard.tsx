@@ -14,6 +14,7 @@ import { fetchUser } from "@/lib/actions/user.action";
 import { currentUser } from "@clerk/nextjs";
 
 import Likebtn from "../likebtn/likebtn";
+import AverageColorDiv from "../ProfilePhotoColor/ProfilePhotoColorBar";
  
 
 //MAIN THREAD CARD
@@ -84,11 +85,34 @@ const ThreadCard = async ({
   let printedlike = false;
   let postNotLikedBtThecurrentUser = true;
 
+  let ProfilePhotoDivStyle = {
+    marginLeft:'-50px', 
+    marginTop:'-50px', 
+    width:'4rem', 
+    height:'4rem'
+  };
+
+  if(isComment){
+    ProfilePhotoDivStyle = {
+      marginLeft:'0px', 
+      marginTop:'0px', 
+      width:'2rem', 
+      height:'2rem'
+    };
+  }
+
   return (
-    <article
-      className={`flex w-full flex-col rounded-xl ${isComment ? "px-0 xs:px-7 mb-2" : "bg-dark-2 p-7 pb-2"} ${isInsideAccord ? "ml-5" : "ml-0"}`}
-    >
-      <div className="flex iteams-start justify-between">
+    <div>
+
+      {!isComment && (
+        <AverageColorDiv src={author.image} />
+      )}
+
+      <article
+        className={`flex w-full flex-col rounded-xl ${isComment ? "px-0 xs:px-7 mb-2" : "bg-dark-2 p-7 pb-2"} ${isInsideAccord ? "ml-5" : "ml-0"}`}
+      >
+
+        <div className="flex iteams-start justify-between">
         <div className="flex w-full flex-1 flex-row gap4">
           
           {isComment && (
@@ -110,7 +134,7 @@ const ThreadCard = async ({
               </Link>
             )}
 
-            <Link href={`/profile/${author.id}`} className="relative" style={{marginLeft:'-50px', marginTop:'-50px', width:'4rem', height:'4rem'}}>
+            <Link href={`/profile/${author.id}`} className="relative" style={ProfilePhotoDivStyle}>
               <Image
                 src={author.image}
                 alt="user_community_image"
@@ -226,24 +250,26 @@ const ThreadCard = async ({
           )}
 
         </div>
-      </div>
+        </div>
 
-      {isComment && (
+        {isComment && (
         <Comment
           threadId={id}
           currentUserImg={userInfo.image}
           currentUserId={JSON.stringify(userInfo._id)}
           isComment={true}
         />
-      )}
+        )}
 
-      {isComment && (
+        {isComment && (
         <div className="flex iteams-start justify-between">
           <AccordionDemo PostId={id} />
         </div>
-      )}
-      
-    </article>
+        )}
+
+      </article>
+
+    </div>
   );
 
 };
