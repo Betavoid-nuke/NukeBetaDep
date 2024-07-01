@@ -110,7 +110,7 @@ const ThreadCard = async ({
               </Link>
             )}
 
-            <Link href={`/profile/${author.id}`} className="relative h-11 w-11">
+            <Link href={`/profile/${author.id}`} className="relative" style={{marginLeft:'-50px', marginTop:'-50px', width:'4rem', height:'4rem'}}>
               <Image
                 src={author.image}
                 alt="user_community_image"
@@ -123,7 +123,7 @@ const ThreadCard = async ({
           <div id="PostCotrolBar" className="flex w-full flex-col ml-4">
 
             <Link href={`/profile/${author.id}`} className="w-fit">
-              <h4 className="cursor-pointer text-base-seminold text-light-1">
+              <h4 className="cursor-pointer text-base-seminold text-light-1" style={{fontSize:'20px'}}>
                 {author.name}
               </h4>
             </Link>
@@ -224,6 +224,7 @@ const ThreadCard = async ({
               />
             </div>
           )}
+
         </div>
       </div>
 
