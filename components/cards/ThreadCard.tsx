@@ -82,6 +82,7 @@ const ThreadCard = async ({
 
   let likeBtnRendered = false;
   let printedlike = false;
+  let postNotLikedBtThecurrentUser = true;
 
   return (
     <article
@@ -132,14 +133,13 @@ const ThreadCard = async ({
             </Link>
 
             <div id="LikeBtn" className="flex gap-3.5 mt-4">
+              
 
-
-
+              
               {likedBy.map((user1) =>
                 {
-                  console.log(owner?._id.valueOf());
-                  console.log(user1.valueOf());
-                  if (user1.valueOf() == owner?._id.valueOf()) {
+                  if (user1.valueOf() == userInfo?._id.valueOf()) {
+                    postNotLikedBtThecurrentUser = false;
                     return (
                       <Likebtn
                         threadId={id}
@@ -154,7 +154,7 @@ const ThreadCard = async ({
                 })
               }
 
-              {likedBy.length == 0 && (
+              {postNotLikedBtThecurrentUser && (
                 <Likebtn howmanylikes={likedBy.length} liked={false} threadId={id} userId={userInfo._id} likedBy={{id:""}} owner={owner?._id.valueOf()}/>
               )}
 
