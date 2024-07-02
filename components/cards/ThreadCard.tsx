@@ -153,7 +153,7 @@ const ThreadCard = async ({
 
             
             <div className="text-base-seminold text-light-1" style={{fontSize:'20px', display:'-webkit-inline-box', width:'100%'}}>
-              <p style={{display:'flex', width:'100%'}}>
+              <div style={{display:'flex', width:'100%'}}>
                 
                 <Link href={`/profile/${author.id}`}>
                   {author.name}
@@ -163,7 +163,7 @@ const ThreadCard = async ({
                   <AverageColorDiv src={author.image} isCommentSection={isComment} />
                 )}
 
-              </p>
+              </div>
             </div>
             
 
