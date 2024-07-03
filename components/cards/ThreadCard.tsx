@@ -111,7 +111,7 @@ async function ThreadCard({
         <AverageColorDiv src={author.image} isCommentSection={isComment} />
       )}
 
-      <article
+      <div
         className={`flex w-full flex-col rounded-xl ${isComment ? "px-0 xs:px-7 mb-2" : "bg-dark-2 p-7 pb-2"} ${isInsideAccord ? "ml-5" : "ml-0"}`}
       >
 
@@ -276,7 +276,7 @@ async function ThreadCard({
         />
         )}
 
-      </article>
+      </div>
 
     </div>
   );
