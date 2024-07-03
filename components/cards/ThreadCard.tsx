@@ -49,7 +49,7 @@ interface Props {
     isInsideAccord?: boolean;
 } //these interfaces are just to define what the props are that needs to be passed into the const below. then when we call it from the page.tsx in the root, we will pass these valuses.
 
-const ThreadCard = async ({
+async function ThreadCard({
   id,
   currentUserId,
   parentId,
@@ -62,7 +62,7 @@ const ThreadCard = async ({
   isInsideComment,
   isInsideAccord,
   likedBy
-}: Props) => { 
+}: Props) { 
 
   //gets current user
   const user = await currentUser();
