@@ -56,7 +56,6 @@ function Leftsidebar() {
                 </SignedIn>
             </div>
 
-
         </section>
     )
 }

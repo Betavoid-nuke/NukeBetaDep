@@ -1,3 +1,4 @@
+
 import { Metadata } from "next";
 import { Content, Inter } from "next/font/google";
 import "../globals.css";
@@ -12,6 +13,7 @@ import React, { useState } from "react";
 import ChatinputFooter from "@/components/chatinputfooter/ChatinputFooter";
 import NextTopLoader from 'nextjs-toploader';
 import { Toaster } from "@/components/ui/sonner";
+
 
 
 
@@ -64,6 +66,7 @@ export default function RootLayout({
                 {children}
               </div>
             </section>
+            <Rightsidebar />
           </main>
 
           <Toaster expand visibleToasts={9} richColors toastOptions={{}} />

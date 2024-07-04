@@ -65,6 +65,7 @@
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-tailwindcss": "^3.13.0",
     "fast-average-color": "^9.4.0",
+    "flowbite-react": "^0.10.1",
     "framer-motion": "^10.18.0",
     "fs": "^0.0.1-security",
     "fuse.js": "^7.0.0",
