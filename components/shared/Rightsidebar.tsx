@@ -22,13 +22,26 @@ interface NewsJSON {
 
 async function Rightsidebar() {
 
-  const news: NewsJSON = await GetNewsFromApi({title:'new+industry+standards+in+mechanical+engineering'});
+  var news: NewsJSON
+  try {
+    
+    news = await GetNewsFromApi({title:'new+industry+standards+in+mechanical+engineering'});
 
-  return (
-    <div>
-      <RightbarCards alltitles={news} />
-    </div>
-  )
+    if(news){
+      return (
+        <div>
+          <RightbarCards alltitles={news} />
+        </div>
+      )
+    } else {
+      return <div></div>
+    }
+
+  } catch (error) {
+    console.log(error);
+    return <div></div>
+  }
+  
 }
 
 export default Rightsidebar
