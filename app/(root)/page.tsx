@@ -25,14 +25,14 @@ export default async function Home() {
   return (
     <>
 
-    <div style={{bottom:'auto', position:'fixed', display:'flex'}}>
+    {/* <div style={{bottom:'auto', position:'fixed', display:'flex'}}>
       <div className="flex-col" style={{justifyContent:'center'}}>
         <HomeHeader />
       </div>
-    </div>
+    </div> */}
     
     <main>
-      <div className='flex flex-col gap-10' style={{marginTop:"120px"}}>
+      <div className='flex flex-col gap-10' style={{marginTop:"20px"}}>
         {result.posts.length === 0 ? (
           <p className='no-result'>No posts found</p>
         ) : (

@@ -76,31 +76,26 @@ function PostThread({ userId }: { userId: string }) {
             className='flex flex-col justify-start gap-10'
             onSubmit={form.handleSubmit(onSubmit)}
             >
-                <h1 className="text-light-1">Create a Post</h1>
 
-                <FormField
-                    control={form.control}
-                    name='thread'
-                    render={({ field }) => (
-                    <FormItem className='flex w-full flex-col gap-3'>
-
-                        <FormLabel className='text-base-semibold text-light-2'>
-                            Content:
-                        </FormLabel>
-
-                        <FormControl className="no-focus border border-dark-4 bg-dark-3 text-light-1">
-                            <Textarea
-                            rows={15}
-                            className='account-form_input no-focus'
-                            {...field}
-                            />
-                        </FormControl>
-
-                        <FormMessage />
-
-                    </FormItem>
-                    )}
-                />
+              <FormField
+                  control={form.control}
+                  name='thread'
+                  render={({ field }) => (
+                  <FormItem className='flex w-full flex-col gap-3'>
+                      <FormLabel className='text-base-semibold text-light-2'>
+                          Content:
+                      </FormLabel>
+                      <FormControl className="no-focus border border-dark-4 bg-dark-3 text-light-1">
+                          <Textarea
+                          rows={15}
+                          className='account-form_input no-focus'
+                          {...field}
+                          />
+                      </FormControl>
+                      <FormMessage />
+                  </FormItem>
+                  )}
+              />
 
                 <ToastSimple Message={"Successfully uploaded your post!"}/>
 

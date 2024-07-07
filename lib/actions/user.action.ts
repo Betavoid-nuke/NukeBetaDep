@@ -9,6 +9,7 @@ import User from "../models/user.model";
 
 import { connectToDB } from "../mongoose";
 import mongoose from 'mongoose';
+import { currentUser } from "@clerk/nextjs";
 
 export async function fetchUser(userId: string) {
   try {
@@ -197,4 +198,9 @@ export async function getActivity(userId: string) {
     console.error("Error fetching replies: ", error);
     throw error;
   }
+}
+
+export async function getCurrentUserData(){
+  const userData = await currentUser();
+  return userData;
 }

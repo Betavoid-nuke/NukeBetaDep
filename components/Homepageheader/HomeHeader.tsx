@@ -1,3 +1,4 @@
+
 import React from "react";
 import ProjectCards from "@/components/projectCards/ProjectCards";
 import { Separator } from "@/components/ui/separator";
@@ -19,43 +20,61 @@ import { fetchUser } from "@/lib/actions/user.action";
 import { Button } from "@/components/ui/button";
 import PostThread from "../forms/postThread";
 import { redirect } from "next/navigation";
+import { User } from "@clerk/nextjs/dist/types/server";
+import mongoose from "mongoose";
 
-async function HomeHeader() {
-  const result = await fetchProject(1, 30); //1 is the page number, and 30 is how many posts to display
-  const user = await currentUser();
-  if (!user) return null; // to avoid typescript warnings
 
-  const userInfo = await fetchUser(user.id);
+interface UserInfo {
+  _id: string,
+  id: string,
+  username: string,
+  name: string,
+  image: string,
+  bio: string,
+  threads: [],
+  onboarded: {
+    type: Boolean
+  },
+  communities: [
+    {
+      type: mongoose.Schema.Types.ObjectId
+    },
+  ],
+}
 
-  const userData = {
-    id: user.id,
-    objectId: userInfo?._id,
-    username: userInfo ? userInfo?.username : user.username,
-    name: userInfo ? userInfo?.name : user.firstName ?? "",
-    bio: userInfo ? userInfo?.bio : "",
-    image: userInfo ? userInfo?.image : user.imageUrl,
-  };
+interface props {
+  userInfo: UserInfo
+}
 
+function HomeHeader({userInfo}:props) {
+
+  console.log(userInfo._id);
+  
   return (
 
-    <div className="flex transboxaddpost" style={{borderRadius:'10px', paddingTop:'10px'}}>
-
-      <div className="text-light-2 mb-5" style={{ fontSize: 32 }}>
-        Posts
-      </div>
+    <div className="flex" style={{borderRadius:'10px', display:'flex', alignContent:'center', justifyContent:'center', flexWrap:'wrap', flexDirection:'row'}}>
 
       <div style={{marginTop:'4px', marginLeft:'10px'}}>
         <Dialog>
-        <DialogTrigger className="text-light-2">
-          <Image
-            src="/assets/addpro3.svg"
-            alt="projectPoster"
-            width={40}
-            height={40}
-          />
-        </DialogTrigger>
 
-        <DialogContent
+          <DialogTrigger className="text-light-2">
+
+            <div className="flex flex-row" style={{flexWrap:'wrap', justifyContent:'center', alignContent:'center'}}>
+              <div className="text-light-2 mr-3" style={{ fontSize: 22, alignItems:'center' }}>
+                Create Post
+              </div>
+
+              <Image
+                src="/assets/addpro3.svg"
+                alt="projectPoster"
+                width={40}
+                height={40}
+              />
+            </div>
+
+          </DialogTrigger>
+
+          <DialogContent
           className="transboxpopup"
           style={{
             backgroundColor: "black",
@@ -68,7 +87,7 @@ async function HomeHeader() {
               className="flex row"
               style={{ justifyContent: "space-between" }}
             >
-              <h1 className="head-text">Create Post</h1>
+              <h1 className="head-text">Create a Post</h1>
               <DialogFooter className="sm:justify-end">
                 <DialogClose asChild>
                   <Button
@@ -89,11 +108,33 @@ async function HomeHeader() {
                 className="transboxpopup mt-9 bg-dark-2 p-10 mb-4"
                 style={{ borderRadius: 20 }}
               >
+
+
+
+
+
+
+
+
+
+
                 <PostThread userId={userInfo._id} />
               </section>
+
+
+
+
+
+
+
+
+
+
             </DialogDescription>
           </DialogHeader>
-        </DialogContent>
+          
+          </DialogContent>
+
         </Dialog>
       </div>
 
