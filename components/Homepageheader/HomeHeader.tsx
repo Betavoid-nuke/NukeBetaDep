@@ -48,7 +48,9 @@ interface props {
 
 function HomeHeader({userInfo}:props) {
 
-  console.log(userInfo._id);
+  if (!userInfo) {
+    return null;
+  }
   
   return (
 
@@ -108,27 +110,8 @@ function HomeHeader({userInfo}:props) {
                 className="transboxpopup mt-9 bg-dark-2 p-10 mb-4"
                 style={{ borderRadius: 20 }}
               >
-
-
-
-
-
-
-
-
-
-
                 <PostThread userId={userInfo._id} />
               </section>
-
-
-
-
-
-
-
-
-
 
             </DialogDescription>
           </DialogHeader>
