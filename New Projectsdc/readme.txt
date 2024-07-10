@@ -1,1 +1,0 @@
-﻿Open the Spaceclaim file, go to design tab, open script section, and copy paste the code in the python file and run it.
