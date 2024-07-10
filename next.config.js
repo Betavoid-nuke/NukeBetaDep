@@ -1,3 +1,5 @@
+const withTM = require('next-transpile-modules')(['@cometchat/uikit-elements', '@cometchat/uikit-shared']);
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   typescript: {
@@ -39,8 +41,24 @@ const nextConfig = {
         protocol: 'https',
         hostname: '**',
       },
-    ],
+    ], 
+  },
+  future: {
+    webpack5: true, // Ensure Webpack 5 is used
+  },
+  webpack: (config) => {
+    config.module.rules.push({
+      test: /\.css$/i,
+      use: ['style-loader', 'css-loader', 'postcss-loader'],
+    });
+    config.resolve.fallback = {
+      ...config.resolve.fallback,
+      fs: false,
+      path: false,
+      os: false,
+    };
+    return config;
   },
 };
 
-module.exports = nextConfig;
+module.exports = withTM(nextConfig);

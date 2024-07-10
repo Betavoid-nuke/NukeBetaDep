@@ -1,6 +1,5 @@
-
 import { Metadata } from "next";
-import { Content, Inter } from "next/font/google";
+import { Inter } from "next/font/google";
 import "../globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import Topbar from "@/components/shared/Topbar";
@@ -8,14 +7,10 @@ import Leftsidebar from "@/components/shared/Leftsidebar";
 import Rightsidebar from "@/components/shared/Rightsidebar";
 import Bottombar from "@/components/shared/Bottombar";
 import { Dialog } from "@/components/ui/dialog";
-import { cn } from "@/lib/utils";
-import React, { useState } from "react";
+import React from "react";
 import ChatinputFooter from "@/components/chatinputfooter/ChatinputFooter";
 import NextTopLoader from 'nextjs-toploader';
 import { Toaster } from "@/components/ui/sonner";
-
-
-
 
 interface Props {
   defaultLayout: number[] | undefined;
@@ -39,8 +34,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={inter.className} style={{overflow:"auto"}}>
-
+        <body className={inter?.className} style={{ overflow: "auto" }}>
           <NextTopLoader
             color="#ffffff"
             initialPosition={0.08}
@@ -62,7 +56,7 @@ export default function RootLayout({
           <main className="flex flex-row" id="mainscreen">
             <Leftsidebar />
             <section className="main-container" id='maincontainer'>
-              <div className="w-full max-w-4xl" style={{ maxWidth: 1200, height:'100%' }}>
+              <div className="w-full max-w-4xl" style={{ maxWidth: '100%', height: '100%', display:'contents' }}>
                 {children}
               </div>
             </section>

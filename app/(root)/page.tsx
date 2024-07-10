@@ -4,6 +4,7 @@ import { fetchPost } from "@/lib/actions/thread.actions";
 import { fetchUser } from "@/lib/actions/user.action";
 import { currentUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
+import { CometChatUsersWithMessages } from "@cometchat/chat-uikit-react";
 
 export default async function Home() {
   const result = await fetchPost(1, 30); //1 is the page number, and 30 is how many posts to display
