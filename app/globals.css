@@ -1,0 +1,597 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+
+  /* main */
+  .main-container {
+    @apply flex min-h-screen flex-1 flex-col items-center bg-dark-1 px-6 pb-10 pt-28 max-md:pb-32 sm:px-10;
+  }
+
+  .main-container-flow {
+    @apply flex min-h-screen flex-1 flex-col items-center bg-dark-1 px-6 pb-10 pt-28 max-md:pb-32 sm:px-10;
+    background-color: rgb(255, 255, 255) !important;
+  }
+
+  /* Head Text */
+  .head-text {
+    @apply text-heading2-bold text-light-1;
+  }
+
+  /* Activity */
+  .activity-card {
+    @apply flex items-center gap-2 rounded-md bg-dark-2 px-7 py-4;
+  }
+
+  /* No Result */
+  .no-result {
+    @apply text-center !text-base-regular text-light-3;
+  }
+
+  /* Community Card */
+  .community-card {
+    @apply w-full rounded-lg bg-dark-3 px-4 py-5 sm:w-96;
+  }
+
+  .community-card_btn {
+    @apply rounded-lg bg-primary-500 px-5 py-1.5 text-small-regular !text-light-1 !important;
+  }
+
+  /* thread card  */
+  .thread-card_bar {
+    @apply relative mt-0 w-0.5 grow rounded-full bg-neutral-800;
+  }
+
+  /* User card */
+  .user-card {
+    @apply flex flex-col justify-between gap-4 max-xs:rounded-xl max-xs:bg-dark-3 max-xs:p-4 xs:flex-row xs:items-center;
+  }
+
+  .user-card_avatar {
+    @apply flex flex-1 items-start justify-start gap-3 xs:items-center;
+  }
+
+  .user-card_btn {
+    @apply h-auto min-w-[74px] rounded-lg bg-primary-500 text-[12px] text-light-1 !important;
+  }
+
+  .text-color-jay-dark1 {
+    color: #616161;
+    text-decoration: none;
+  }  
+  .text-color-jay-btn-1 {
+    color: #707070;
+    text-decoration: none;
+    background: none !important;
+    border: #b4b4b4 !important;
+    border-color: #141414 !important;
+    border-style: solid !important;
+    border-width: 0.1rem !important;
+    font-size: small;
+  }  
+  .postbadge1 {
+    color: #ffffff;
+    font-style: normal;
+    background: none !important;
+    border: #b4b4b4 !important;
+    border-color: #141414 !important;
+    border-style: solid !important;
+    border-width: 0.1rem !important;
+    font-size: small;
+  }  
+
+  .text-color-jay-dark2 {
+    color: #353535;
+    text-decoration: none;
+    font-size: 0.85rem
+  }  
+
+  .inputComment-1 {
+    border: none;
+    background-color: #5f5f5f !important;
+    background:#080808 !important;
+  }
+
+  .profileHeader{
+    margin-top: -65px;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .css-1rju6fn {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    position: relative;
+    min-height: 18.75rem;
+    opacity: 1;
+    color: rgb(52, 71, 103);
+    box-shadow: none;
+    background: linear-gradient(195deg, rgba(73, 163, 241, 0.6), rgba(26, 115, 232, 0.6)) 50% center / cover, url(/material-dashboard-react/static/media/bg-profile.af1219a….jpeg) transparent;
+    border-radius: 0.75rem;
+    background-position: 50% center;
+    overflow: hidden;
+  }
+
+  .proposter {
+    height: 20rem;
+  }
+
+  .commentTextCollor::placeholder {
+    color: #616161 !important;
+  }
+
+  .searchbar {
+    @apply flex gap-1 rounded-lg bg-dark-3 px-4 py-2;
+  }
+
+  .searchbar_input {
+    @apply border-none bg-dark-3 text-base-regular text-light-4 outline-none !important;
+  }
+
+  .topbar {
+    @apply fixed top-0 z-30 flex w-full items-center justify-between bg-dark-2 px-6 py-3;
+  }
+
+  .bottombar {
+    @apply fixed bottom-0 z-10 w-full rounded-t-3xl bg-glassmorphism p-4 backdrop-blur-lg xs:px-7 md:hidden;
+  }
+
+  .bottombar_container {
+    @apply flex items-center justify-between gap-3 xs:gap-5;
+  }
+
+  .bottombar_link {
+    @apply relative flex flex-col items-center gap-2 rounded-lg p-2 sm:flex-1 sm:px-2 sm:py-2.5;
+  }
+
+  .leftsidebar {
+    @apply sticky left-0 top-0 z-20 flex h-screen w-fit flex-col justify-between overflow-auto border-r border-r-dark-4 bg-dark-2 pb-5 pt-28 max-md:hidden;
+  }
+
+  .chatinput {
+    margin-top: auto;
+    position: sticky;
+    bottom: 0;
+  }
+
+  .leftsidebar_link {
+    @apply relative flex justify-start gap-4 rounded-lg p-4;
+  }
+
+  .pagination {
+    @apply mt-10 flex w-full items-center justify-center gap-5;
+  }
+
+  .rightsidebar {
+    @apply sticky right-0 top-0 z-20 flex h-screen w-fit flex-col justify-between gap-12 overflow-auto border-0 border-l-dark-4 px-2 pb-6 pt-28 pr-10 max-xl:hidden;
+    width: 450px;
+    background-color: black;
+  }
+}
+
+@layer utilities {
+  .css-invert {
+    @apply invert-[50%] brightness-200;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+    border-radius: 2px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #09090a;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #5c5c7b;
+    border-radius: 50px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #7878a3;
+  }
+}
+
+/* Clerk Responsive fix */
+.cl-organizationSwitcherTrigger .cl-userPreview .cl-userPreviewTextContainer {
+  @apply max-sm:hidden;
+}
+
+.cl-organizationSwitcherTrigger
+  .cl-organizationPreview
+  .cl-organizationPreviewTextContainer {
+  @apply max-sm:hidden;
+}
+
+/* Shadcn Component Styles */
+
+/* Tab */
+.tab {
+  @apply flex min-h-[50px] flex-1 items-center gap-3 bg-dark-2 text-light-2 data-[state=active]:bg-[#0e0e12] data-[state=active]:text-light-2 !important;
+}
+
+.no-focus {
+  @apply focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0 !important;
+}
+
+/* Account Profile  */
+.account-form_image-label {
+  @apply flex h-24 w-24 items-center justify-center rounded-full bg-dark-4 !important;
+}
+
+.account-form_image-input {
+  @apply cursor-pointer border-none bg-transparent outline-none file:text-blue !important;
+}
+
+.account-form_input {
+  @apply border border-dark-4 bg-dark-3 text-light-1 !important;
+}
+
+/* Comment Form */
+.comment-form {
+  @apply mt-0 flex items-center gap-4 border-y border-y-dark-4 py-5 max-xs:flex-col ;
+}
+
+.comment-form_btn {
+  @apply rounded-3xl bg-primary-500 px-8 py-2 !text-small-regular text-light-1 max-xs:w-full !important;
+}
+
+
+.transbox {
+ 
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background-color: rgba(73, 73, 73, 0.24) !important;
+  @apply z-10 w-full bg-glassmorphism p-4 backdrop-blur-lg xs:px-7;
+  
+}
+
+.transboxformesageinput {
+ 
+  background-color: rgba(73, 73, 73, 0.103) !important;
+  @apply w-full bg-glassmorphism backdrop-blur-lg xs:px-7;
+  z-index: 10;
+  
+}
+
+.transboxaddpost {
+ 
+  background-color: rgba(12, 12, 12, 0.315) !important;
+  @apply w-full bg-glassmorphism backdrop-blur-lg;
+  padding-left: 100px;
+  padding-right: 100px;
+  z-index: 99999;
+  
+}
+
+.transboxpopup {
+
+  background-color: rgba(68, 68, 68, 0.24) !important;
+  @apply w-full bg-glassmorphism p-4 backdrop-blur-lg xs:px-7;
+
+}
+
+.posterforprofile{
+  width: -webkit-fill-available;
+}
+
+.posterforprofileCont{
+  overflow: auto;
+  overflow: hidden;
+  border-radius: 20px;
+  height: 400px;
+  align-items: center;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.card {
+  background-color: #0e0e0e;
+  border-radius: 20px;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.maincont{
+  display: flex;
+  flex-direction: row;
+}
+
+.projectImg {
+  border: 0.2rem #000000 solid;
+  border-radius: 20px;
+  max-height: 100%;
+  max-width: 100%;
+  display: flex;
+  width: auto;
+  height: auto;
+}
+
+.projectInfo {
+  max-width: 100px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-width: -webkit-fill-available;
+}
+
+.projectDes {
+  width: fit-content;
+  height: 50px;
+  display: flex;
+  overflow: hidden;
+  text-wrap: wrap;
+}
+
+.projectposter {
+  margin-left: -10px;
+  margin-right: -10px;
+  margin-top: -10px;
+}
+
+
+.text-gradient {
+  background: linear-gradient(90deg,#686997,rgba(168,85,247,.8));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text
+}
+
+.sendermsgstyle {
+  background-color: #3e3f7e;
+  border-radius: 20px;
+}
+
+.recievermsgstyle {
+  background-color: #7e3e51;
+  border-radius: 20px;
+}
+
+.main-container-chat {
+  display: flex;
+  min-height: 100%;
+  flex: 1 1 0%;
+  flex-direction: column;
+  align-items: center;
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
+
+
+
+
+.aimessagebox{
+  justify-content: flex-start;
+}
+
+.usermessagebox{
+  justify-content: flex-end;
+}
+
+
+
+.messgaebox {
+  margin-left: 350px;
+  margin-right: 80px;
+  border-radius: 20px;
+  width: 100%;
+  border-color: rgb(36, 36, 36);
+  border: 0px solid;
+  margin-bottom: 30px;
+  
+}
+
+@media screen and (max-width: 768px) {
+  .messgaebox {
+    margin-left: 80px;
+    margin-bottom: 110px;
+  }
+}
+
+
+
+
+.flowbox {
+  top: 90px;
+  left: 300px;
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .flowbox {
+    top: 90px;
+    left: 20px;
+  }
+}
+
+.text-updater-node {
+  height: 50px;
+  border: 2px solid #8d8d8d;
+  padding: 5px;
+  border-radius: 10px;
+  background: rgb(255, 255, 255);
+}
+
+.text-updater-node label {
+  display: block;
+  color: #777;
+  font-size: 12px;
+}
+
+.keywords::placeholder {
+  font-size: 12px; /* Adjust the font size as needed */
+}
+
+.placeholderNode {
+  border:'#919191';
+  border-style: dotted;
+  border-width: 4px;
+}
+
+.AssemblyBtn {
+  background-color: #00000000;
+  color: inherit;
+  font-size: 22px;
+  padding: 25px;
+  border: 3px solid;
+  border-radius: 50px;
+}
+
+.AssemblyBtn:hover {
+  background-color: #00000000; /* Maintain transparent background on hover */
+  color: inherit; /* Maintain inherited text color on hover */
+}
+
+
+
+
+
+/* Change the color of the scrollbar thumb */
+::-webkit-scrollbar-thumb {
+  background-color: #4d4d4d;
+}
+
+/* Change the color of the scrollbar track */
+::-webkit-scrollbar-track {
+  background-color: #000000;
+}
+
+/* Change the width of the scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Hide the scrollbar buttons (arrows) */
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+.contbtn {
+  height: 50px;
+  border: 2px solid #8d8d8d;
+  padding: 5px;
+  border-radius: 10px;
+  background: rgb(255, 255, 255);
+}
+
+.contbtn label {
+  display: block;
+  color: #777;
+  font-size: 12px;
+}
+
+
+
+
+.doceditornode {
+  height: 1000px;
+  width: 1000px;
+  border: 2px solid #8d8d8d;
+  padding: 5px;
+  border-radius: 10px;
+  background: rgb(255, 255, 255);
+}
+
+.doceditornode label {
+  display: block;
+  color: #464646;
+  font-size: 16px;
+}
+
+
+.buttonbarbtns {
+  border: 2px solid;
+  border-radius: 20px;
+  border-color: #000000;
+  z-index: 9999;
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 10px;
+  margin: 10px;
+  width: inherit;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.colorpicker {
+  background-color: #5a5a5a;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.gradient-background {
+  background: linear-gradient(45deg, #9a67f3, #ffccf3, #858dff, #b9c5ff);
+  background-size: 240% 240%;
+  animation: gradient-animation 5s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+.transparentBG {
+
+  background-color: rgba(68, 68, 68, 0.24) !important;
+  @apply bg-glassmorphism p-4 backdrop-blur-lg xs:px-7;
+
+}
+
+.transparentBG2 {
+
+  background-color: rgba(0, 0, 0, 0.226) !important;
+  border-radius: 20px;
+  @apply bg-glassmorphism p-4 backdrop-blur-lg xs:px-7;
+
+}
