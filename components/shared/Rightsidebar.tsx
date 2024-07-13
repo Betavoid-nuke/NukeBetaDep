@@ -7,21 +7,19 @@ import { currentUser } from '@clerk/nextjs';
 import { fetchUser, getCurrentUserData } from '@/lib/actions/user.action';
 import React, { useState, useEffect } from 'react';
 
-interface Article {
-  source: { id: string | null; name: string };
-  author: string;
-  title: string;
-  description: string;
-  url: string;
-  urlToImage: string;
-  publishedAt: string;
-  content: string;
-}
-
 interface NewsJSON {
   status: string;
   totalResults: number;
-  articles: Article[];
+  articles: {
+    source: { id: string | null; name: string };
+    author: string;
+    title: string;
+    description: string;
+    url: string;
+    urlToImage: string;
+    publishedAt: string;
+    content: string;
+  }[];
 }
 
 const Rightsidebar: React.FC = () => {
@@ -29,7 +27,16 @@ const Rightsidebar: React.FC = () => {
   const [news, setNews] = useState<NewsJSON>({
     status: '',
     totalResults: 0,
-    articles: [],
+    articles: [{
+      source: {id:'', name:''},
+      author: '',
+      title: '',
+      description: '',
+      url: '',
+      urlToImage: '',
+      publishedAt: '',
+      content: ''
+    }]
   });
   const [userInfo, setUserInfo] = useState<any>(null);
 
