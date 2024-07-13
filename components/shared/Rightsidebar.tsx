@@ -94,10 +94,8 @@ const Rightsidebar: React.FC = () => {
         <div>No new news as of now.</div>
       ) : error ? (
         <div>Error: {error}</div>
-      ) : news.articles ? (
-        <RightbarCards alltitles={news} userInfo={userInfo} />
       ) : (
-        <div style={{background:'black'}}></div>
+        <RightbarCards alltitles={news} userInfo={userInfo} />
       )}
     </div>
   );
