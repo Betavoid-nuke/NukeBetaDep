@@ -25,6 +25,11 @@ export const sidebarLinks = [
     label: "Brainstrom",
   },
   {
+    imgURL: "/assets/user.svg",
+    route: "/users",
+    label: "Users",
+  },
+  {
     imgURL: "/assets/heart.svg",
     route: "/activities",
     label: "Activities",

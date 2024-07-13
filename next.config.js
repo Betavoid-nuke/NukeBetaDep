@@ -11,13 +11,7 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   images: {
-    domains: [
-      'img.clerk.com',
-      'images.clerk.dev',
-      'uploadthing.com',
-      'placehold.co',
-      'utfs.io',
-    ],
+    domains: [],
     remotePatterns: [
       {
         protocol: "https",
@@ -39,6 +33,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: '**',
       },
+      {
+        protocol: 'http',
+        hostname: '**',
+      }
     ],
   },
 };

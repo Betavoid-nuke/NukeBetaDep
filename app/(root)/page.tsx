@@ -1,44 +1,43 @@
+
 import HomeHeader from "@/components/Homepageheader/HomeHeader";
 import ThreadCard from "@/components/cards/ThreadCard";
+import Posts from "@/components/homepage/Posts";
 import { fetchPost } from "@/lib/actions/thread.actions";
 import { fetchUser } from "@/lib/actions/user.action";
 import { currentUser } from "@clerk/nextjs";
+import { User } from "@clerk/nextjs/dist/types/server";
 import { redirect } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default async function Home() {
-  const result = await fetchPost(1, 30); //1 is the page number, and 30 is how many posts to display
-  
-  //checks if the user is logged in or not
-  const user = await currentUser();
+
+  // Checks if the user is logged in or not
+  const user: User | null = await currentUser();
   if (!user) {
-    redirect('/sign-in'); //Redirect to sign in page
+    redirect('/sign-in'); // Redirect to sign-in page
     return;
   }
 
-  //checks if the user is onboarded or not
+  // Checks if the user is onboarded or not
   const userInfo = await fetchUser(user.id);
   if (!userInfo?.onboarded) {
     redirect('/onboarding'); // Redirect to onboarding page
     return;
   }
 
-  return (
-    <>
+  // Fetch posts
+  const result = await fetchPost(1, 30);
 
-    {/* <div style={{bottom:'auto', position:'fixed', display:'flex'}}>
-      <div className="flex-col" style={{justifyContent:'center'}}>
-        <HomeHeader />
-      </div>
-    </div> */}
-    
+  // Pass user and fetched posts to the client component
+  return (
     <main>
-      <div className='flex flex-col gap-10' style={{marginTop:"20px"}}>
+      <div className='flex flex-col gap-10 text-light-1' style={{ marginTop: "20px" }}>
         {result.posts.length === 0 ? (
           <p className='no-result'>No posts found</p>
         ) : (
+        
           <>
-            {result.posts.map((post) => (   
-              
+            {result.posts.map((post) => (
               post.parentId ? null : (
                 <ThreadCard
                   key={post._id}
@@ -53,13 +52,12 @@ export default async function Home() {
                   likedBy={post.likedBy}
                 />
               )
-              
             ))}
           </>
+
         )}
-      </div>
+    </div>
     </main>
-    </>
-  )
+  );
 
 }
