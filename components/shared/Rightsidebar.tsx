@@ -31,14 +31,30 @@ const Rightsidebar: React.FC = () => {
     totalResults: 0,
     articles: [],
   });
-  const [userInfo, setUserInfo] = useState<any>(null); // Adjust type as necessary
+  const [userInfo, setUserInfo] = useState<any>(null);
+
+  //for placeholder and timeout hendlintg
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [timeoutError, setTimeoutError] = useState(false);
 
   useEffect(() => {
 
     const fetchData = async () => {
       try {
+
+        //hending timeout shit
+        const controller = new AbortController();
+        const signal = controller.signal;
+        const timeoutId = setTimeout(() => {
+          controller.abort();
+          setTimeoutError(true);
+        }, 9000);
         
+        //getting the latest news
         const newsData = await GetNewsFromApi({ title: 'new+industry+standards+in+mechanical+engineering' });
+
+        //getting user information
         const currentUserData = await getCurrentUserData();
         if (!currentUserData) return;
         const userInfoData = await fetchUser(currentUserData.id);
@@ -46,8 +62,17 @@ const Rightsidebar: React.FC = () => {
         setNews(newsData);
         setUserInfo(userInfoData);
 
-      } catch (error) {
-        console.error(error);
+        //clearing timeout bomb
+        clearTimeout(timeoutId);
+
+      } catch (error:any) {
+        if (error.name === 'AbortError') {
+          console.log('Fetch aborted');
+        } else {
+          setError(error);
+        }
+      } finally {
+        setLoading(false);
       }
     };
     fetchData();
@@ -56,7 +81,15 @@ const Rightsidebar: React.FC = () => {
 
   return (
     <div>
-      <RightbarCards alltitles={news} userInfo={userInfo} />
+      {loading ? (
+        <div style={{background:'black', color:'white'}}>Loading...</div>
+      ) : timeoutError ? (
+        <div>No new news as of now.</div>
+      ) : error ? (
+        <div>Error: {error}</div>
+      ) : (
+        <RightbarCards alltitles={news} userInfo={userInfo} />
+      )}
     </div>
   );
 
