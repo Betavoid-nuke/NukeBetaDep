@@ -60,7 +60,7 @@ const RightbarCards = ({alltitles, userInfo}:props) => {
     return null;
   }
 
-  if(alltitles.articles){
+  if(alltitles){
 
     //articles, all of these are array
     const titles = alltitles.articles.map(article => article.title);
@@ -117,7 +117,7 @@ const RightbarCards = ({alltitles, userInfo}:props) => {
     }
 
   } else {
-    return <div></div>;
+    return <div style={{background:'black'}}></div>;
   }
 };
 
