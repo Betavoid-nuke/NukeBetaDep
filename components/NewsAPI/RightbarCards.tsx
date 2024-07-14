@@ -12,7 +12,7 @@ import mongoose from 'mongoose';
 
 
 interface Article {
-  source: { id: string | null; name: string };
+  source: [Object];
   author: string;
   title: string;
   description: string;
@@ -60,8 +60,15 @@ const RightbarCards = ({alltitles, userInfo}:props) => {
     return null;
   }
 
-  if(alltitles){
 
+
+
+  if(alltitles){ //impliment the react timeout thing here, i think the new api is not working in production as it is free for dev only
+
+
+
+
+  
     //articles, all of these are array
     const titles = alltitles.articles.map(article => article.title);
     const source = alltitles.articles.map(article => article.source);
@@ -101,9 +108,7 @@ const RightbarCards = ({alltitles, userInfo}:props) => {
                   />
                   <NewsCard title={title} urlarticle={articleurl[index]} />
                   <div className='flex flex-row mb-5' style={{fontSize:'12px'}}>
-                        <div style={{fontStyle:'normal', fontWeight:'lighter'}}>{source[index].name}</div>
-                        <div className='mr-5 ml-5' style={{color:'gray'}}> | </div>
-                        <div style={{fontStyle:'normal', fontWeight:'lighter'}}>{new Date(publishedAt[index]).toLocaleDateString('en-CA')}</div>
+                    <div style={{fontStyle:'normal', fontWeight:'lighter'}}>{new Date(publishedAt[index]).toLocaleDateString('en-CA')}</div>
                   </div>
                   <Separator style={{height:'1px', backgroundColor:'#353535', marginBottom:'20px'}} />
                 </div>
