@@ -27,25 +27,25 @@ result = SketchHelper.StartConstraintSketching()
 
 # Sketch Circle
 origin = Point2D.Create(MM(0), MM(0))
-result = SketchCircle.Create(origin, MM(2413.0))
+result = SketchCircle.Create(origin, MM(2171.6999999999994))
 # EndBlock
 
 
 # Sketch Circle
 origin = Point2D.Create(MM(0), MM(0))
-result = SketchCircle.Create(origin, MM(2031.9999999999995))
+result = SketchCircle.Create(origin, MM(1828.7999999999995))
 # EndBlock
 
 
 # Sketch Circle
 origin = Point2D.Create(MM(0), MM(0))
-result = SketchCircle.Create(origin, MM(2070.0999999999995))
+result = SketchCircle.Create(origin, MM(1863.0899999999995))
 # EndBlock
 
 
 # Sketch Circle
 origin = Point2D.Create(MM(0), MM(0))
-result = SketchCircle.Create(origin, MM(2286.0))
+result = SketchCircle.Create(origin, MM(2057.3999999999996))
 # EndBlock
 
 #__________________________________________________
@@ -57,21 +57,21 @@ result = SketchCircle.Create(origin, MM(2286.0))
 
 # Sketch Line
 start = Point2D.Create(MM(0), MM(0))
-end = Point2D.Create(MM(-2413.0), MM(0))
+end = Point2D.Create(MM(-2171.6999999999994), MM(0))
 result = SketchLine.Create(start, end)
 # EndBlock
 
 
 # Sketch Line
 start = Point2D.Create(MM(0), MM(0))
-end = Point2D.Create(MM(-2413.0), MM(-13.7748545750948))
+end = Point2D.Create(MM(-2171.6999999999994), MM(-13.7748545750948))
 result = SketchLine.Create(start, end)
 # EndBlock
 
 
 # Sketch Line
 start = Point2D.Create(MM(0), MM(0))
-end = Point2D.Create(MM(-2413.0), MM(12.7693187630313))
+end = Point2D.Create(MM(-2171.6999999999994), MM(12.7693187630313))
 result = SketchLine.Create(start, end)
 # EndBlock
 
@@ -155,7 +155,7 @@ result = SketchCircle.Create(origin, MM(17.2740694988181))
 
 
 # Sketch Circle
-origin = Point2D.Create(MM(-3619.5), MM(-9.99737968607917))
+origin = Point2D.Create(MM(-3257.5499999999993), MM(-9.99737968607917))
 result = SketchCircle.Create(origin, MM(1.15878793700168))
 # EndBlock
 
@@ -556,7 +556,7 @@ result = ViewHelper.SetViewMode(mode, None)
 selection = FaceSelection.Create(GetRootPart().Bodies[0].Faces[0])
 options = ExtrudeFaceOptions()
 options.ExtrudeType = ExtrudeType.Add
-result = ExtrudeFaces.Execute(selection, MM(1270.0), options)
+result = ExtrudeFaces.Execute(selection, MM(1142.9999999999998), options)
 # EndBlock
 
 #__________________________________________________
@@ -636,7 +636,7 @@ result = DatumPlaneCreator.Create(selection, True, None)
 selection = Selection.Create(GetRootPart().DatumPlanes[0])
 direction = Move.GetDirection(selection)
 options = MoveOptions()
-result = Move.Translate(selection, direction, MM(1270.0), options)
+result = Move.Translate(selection, direction, MM(1142.9999999999998), options)
 # EndBlock
 
 
@@ -653,7 +653,7 @@ result = SketchHelper.StartConstraintSketching()
 
 # Sketch Circle
 origin = Point2D.Create(MM(0), MM(0))
-result = SketchCircle.Create(origin, MM(2031.9999999999995))
+result = SketchCircle.Create(origin, MM(1828.7999999999995))
 # EndBlock
 
 
@@ -679,14 +679,14 @@ result = ExtrudeFaces.UpTo(selection, Direction.DirY, upToSelection, Point.Creat
 # Create 108 Rounds
 selection = EdgeSelection.Create([GetRootPart().Bodies[0].Edges[172], GetRootPart().Bodies[0].Edges[175], GetRootPart().Bodies[0].Edges[177], GetRootPart().Bodies[0].Edges[167], GetRootPart().Bodies[0].Edges[164], GetRootPart().Bodies[0].Edges[160], GetRootPart().Bodies[0].Edges[154], GetRootPart().Bodies[0].Edges[157], GetRootPart().Bodies[0].Edges[159], GetRootPart().Bodies[0].Edges[149], GetRootPart().Bodies[0].Edges[146], GetRootPart().Bodies[0].Edges[142], GetRootPart().Bodies[0].Edges[136], GetRootPart().Bodies[0].Edges[139], GetRootPart().Bodies[0].Edges[141], GetRootPart().Bodies[0].Edges[131], GetRootPart().Bodies[0].Edges[128], GetRootPart().Bodies[0].Edges[124], GetRootPart().Bodies[0].Edges[118], GetRootPart().Bodies[0].Edges[121], GetRootPart().Bodies[0].Edges[123], GetRootPart().Bodies[0].Edges[113], GetRootPart().Bodies[0].Edges[110], GetRootPart().Bodies[0].Edges[106], GetRootPart().Bodies[0].Edges[100], GetRootPart().Bodies[0].Edges[103], GetRootPart().Bodies[0].Edges[105], GetRootPart().Bodies[0].Edges[95], GetRootPart().Bodies[0].Edges[92], GetRootPart().Bodies[0].Edges[88], GetRootPart().Bodies[0].Edges[82], GetRootPart().Bodies[0].Edges[85], GetRootPart().Bodies[0].Edges[87], GetRootPart().Bodies[0].Edges[77], GetRootPart().Bodies[0].Edges[74], GetRootPart().Bodies[0].Edges[70], GetRootPart().Bodies[0].Edges[64], GetRootPart().Bodies[0].Edges[67], GetRootPart().Bodies[0].Edges[69], GetRootPart().Bodies[0].Edges[59], GetRootPart().Bodies[0].Edges[56], GetRootPart().Bodies[0].Edges[52], GetRootPart().Bodies[0].Edges[46], GetRootPart().Bodies[0].Edges[49], GetRootPart().Bodies[0].Edges[51], GetRootPart().Bodies[0].Edges[41], GetRootPart().Bodies[0].Edges[38], GetRootPart().Bodies[0].Edges[34], GetRootPart().Bodies[0].Edges[28], GetRootPart().Bodies[0].Edges[31], GetRootPart().Bodies[0].Edges[33], GetRootPart().Bodies[0].Edges[23], GetRootPart().Bodies[0].Edges[20], GetRootPart().Bodies[0].Edges[268], GetRootPart().Bodies[0].Edges[262], GetRootPart().Bodies[0].Edges[265], GetRootPart().Bodies[0].Edges[267], GetRootPart().Bodies[0].Edges[257], GetRootPart().Bodies[0].Edges[254], GetRootPart().Bodies[0].Edges[250], GetRootPart().Bodies[0].Edges[244], GetRootPart().Bodies[0].Edges[247], GetRootPart().Bodies[0].Edges[249], GetRootPart().Bodies[0].Edges[239], GetRootPart().Bodies[0].Edges[236], GetRootPart().Bodies[0].Edges[232], GetRootPart().Bodies[0].Edges[226], GetRootPart().Bodies[0].Edges[229], GetRootPart().Bodies[0].Edges[231], GetRootPart().Bodies[0].Edges[221], GetRootPart().Bodies[0].Edges[218], GetRootPart().Bodies[0].Edges[214], GetRootPart().Bodies[0].Edges[208], GetRootPart().Bodies[0].Edges[211], GetRootPart().Bodies[0].Edges[213], GetRootPart().Bodies[0].Edges[203], GetRootPart().Bodies[0].Edges[200], GetRootPart().Bodies[0].Edges[196], GetRootPart().Bodies[0].Edges[190], GetRootPart().Bodies[0].Edges[193], GetRootPart().Bodies[0].Edges[195], GetRootPart().Bodies[0].Edges[185], GetRootPart().Bodies[0].Edges[182], GetRootPart().Bodies[0].Edges[178], GetRootPart().Bodies[0].Edges[272], GetRootPart().Bodies[0].Edges[304], GetRootPart().Bodies[0].Edges[298], GetRootPart().Bodies[0].Edges[301], GetRootPart().Bodies[0].Edges[303], GetRootPart().Bodies[0].Edges[293], GetRootPart().Bodies[0].Edges[290], GetRootPart().Bodies[0].Edges[286], GetRootPart().Bodies[0].Edges[280], GetRootPart().Bodies[0].Edges[283], GetRootPart().Bodies[0].Edges[285], GetRootPart().Bodies[0].Edges[275], GetRootPart().Bodies[0].Edges[310], GetRootPart().Bodies[0].Edges[305], GetRootPart().Bodies[0].Edges[318], GetRootPart().Bodies[0].Edges[321], GetRootPart().Bodies[0].Edges[323], GetRootPart().Bodies[0].Edges[313], GetRootPart().Bodies[0].Edges[2], GetRootPart().Bodies[0].Edges[16], GetRootPart().Bodies[0].Edges[5], GetRootPart().Bodies[0].Edges[15], GetRootPart().Bodies[0].Edges[10], GetRootPart().Bodies[0].Edges[13], ])
 options = ConstantRoundOptions()
-result = ConstantRound.Execute(selection, MM(38.099999999999994), options, None)
+result = ConstantRound.Execute(selection, MM(34.28999999999999), options, None)
 # EndBlock
 
 
 # Create 108 Rounds
 selection = EdgeSelection.Create([GetRootPart().Bodies[0].Edges[132], GetRootPart().Bodies[0].Edges[135], GetRootPart().Bodies[0].Edges[142], GetRootPart().Bodies[0].Edges[140], GetRootPart().Bodies[0].Edges[138], GetRootPart().Bodies[0].Edges[143], GetRootPart().Bodies[0].Edges[144], GetRootPart().Bodies[0].Edges[147], GetRootPart().Bodies[0].Edges[154], GetRootPart().Bodies[0].Edges[152], GetRootPart().Bodies[0].Edges[150], GetRootPart().Bodies[0].Edges[155], GetRootPart().Bodies[0].Edges[156], GetRootPart().Bodies[0].Edges[159], GetRootPart().Bodies[0].Edges[166], GetRootPart().Bodies[0].Edges[164], GetRootPart().Bodies[0].Edges[162], GetRootPart().Bodies[0].Edges[167], GetRootPart().Bodies[0].Edges[168], GetRootPart().Bodies[0].Edges[171], GetRootPart().Bodies[0].Edges[178], GetRootPart().Bodies[0].Edges[176], GetRootPart().Bodies[0].Edges[174], GetRootPart().Bodies[0].Edges[179], GetRootPart().Bodies[0].Edges[180], GetRootPart().Bodies[0].Edges[183], GetRootPart().Bodies[0].Edges[190], GetRootPart().Bodies[0].Edges[188], GetRootPart().Bodies[0].Edges[186], GetRootPart().Bodies[0].Edges[191], GetRootPart().Bodies[0].Edges[192], GetRootPart().Bodies[0].Edges[195], GetRootPart().Bodies[0].Edges[202], GetRootPart().Bodies[0].Edges[200], GetRootPart().Bodies[0].Edges[198], GetRootPart().Bodies[0].Edges[203], GetRootPart().Bodies[0].Edges[205], GetRootPart().Bodies[0].Edges[208], GetRootPart().Bodies[0].Edges[215], GetRootPart().Bodies[0].Edges[213], GetRootPart().Bodies[0].Edges[211], GetRootPart().Bodies[0].Edges[204], GetRootPart().Bodies[0].Edges[0], GetRootPart().Bodies[0].Edges[3], GetRootPart().Bodies[0].Edges[10], GetRootPart().Bodies[0].Edges[8], GetRootPart().Bodies[0].Edges[6], GetRootPart().Bodies[0].Edges[11], GetRootPart().Bodies[0].Edges[131], GetRootPart().Bodies[0].Edges[12], GetRootPart().Bodies[0].Edges[60], GetRootPart().Bodies[0].Edges[63], GetRootPart().Bodies[0].Edges[70], GetRootPart().Bodies[0].Edges[68], GetRootPart().Bodies[0].Edges[66], GetRootPart().Bodies[0].Edges[71], GetRootPart().Bodies[0].Edges[72], GetRootPart().Bodies[0].Edges[75], GetRootPart().Bodies[0].Edges[82], GetRootPart().Bodies[0].Edges[80], GetRootPart().Bodies[0].Edges[78], GetRootPart().Bodies[0].Edges[83], GetRootPart().Bodies[0].Edges[84], GetRootPart().Bodies[0].Edges[87], GetRootPart().Bodies[0].Edges[94], GetRootPart().Bodies[0].Edges[92], GetRootPart().Bodies[0].Edges[90], GetRootPart().Bodies[0].Edges[95], GetRootPart().Bodies[0].Edges[96], GetRootPart().Bodies[0].Edges[99], GetRootPart().Bodies[0].Edges[106], GetRootPart().Bodies[0].Edges[104], GetRootPart().Bodies[0].Edges[102], GetRootPart().Bodies[0].Edges[107], GetRootPart().Bodies[0].Edges[108], GetRootPart().Bodies[0].Edges[111], GetRootPart().Bodies[0].Edges[118], GetRootPart().Bodies[0].Edges[116], GetRootPart().Bodies[0].Edges[114], GetRootPart().Bodies[0].Edges[119], GetRootPart().Bodies[0].Edges[120], GetRootPart().Bodies[0].Edges[123], GetRootPart().Bodies[0].Edges[130], GetRootPart().Bodies[0].Edges[128], GetRootPart().Bodies[0].Edges[126], GetRootPart().Bodies[0].Edges[59], GetRootPart().Bodies[0].Edges[48], GetRootPart().Bodies[0].Edges[51], GetRootPart().Bodies[0].Edges[58], GetRootPart().Bodies[0].Edges[56], GetRootPart().Bodies[0].Edges[54], GetRootPart().Bodies[0].Edges[47], GetRootPart().Bodies[0].Edges[36], GetRootPart().Bodies[0].Edges[39], GetRootPart().Bodies[0].Edges[46], GetRootPart().Bodies[0].Edges[44], GetRootPart().Bodies[0].Edges[42], GetRootPart().Bodies[0].Edges[35], GetRootPart().Bodies[0].Edges[32], GetRootPart().Bodies[0].Edges[30], GetRootPart().Bodies[0].Edges[15], GetRootPart().Bodies[0].Edges[34], GetRootPart().Bodies[0].Edges[20], GetRootPart().Bodies[0].Edges[18], GetRootPart().Bodies[0].Edges[22], GetRootPart().Bodies[0].Edges[23], GetRootPart().Bodies[0].Edges[24], GetRootPart().Bodies[0].Edges[27], ])
 options = ConstantRoundOptions()
-result = ConstantRound.Execute(selection, MM(38.099999999999994), options, None)
+result = ConstantRound.Execute(selection, MM(34.28999999999999), options, None)
 # EndBlock
 
 
@@ -730,7 +730,7 @@ result = SketchHelper.StartConstraintSketching()
 
 # Sketch Circle
 origin = Point2D.Create(MM(4.16333634234434e-14), MM(-2.77555756156289e-14))
-result = SketchCircle.Create(origin, MM(685.7999999999998))
+result = SketchCircle.Create(origin, MM(617.2199999999999))
 # EndBlock
 
 
@@ -751,7 +751,7 @@ result = ExtrudeFaces.UpTo(selection, Direction.DirY, upToSelection, Point.Creat
 # Create 2 Rounds
 selection = EdgeSelection.Create([GetRootPart().Bodies[0].Edges[757], GetRootPart().Bodies[0].Edges[756], ])
 options = ConstantRoundOptions()
-result = ConstantRound.Execute(selection, MM(38.099999999999994), options, None)
+result = ConstantRound.Execute(selection, MM(34.28999999999999), options, None)
 # EndBlock
 
 

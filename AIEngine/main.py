@@ -41,22 +41,20 @@ args.input = import_file.get(args.input)
 if not args.save_path:
    args.save_path = "./outputs/"
 
-
 model = gear.GearDesigner()
 outputs = model.process(args.input)
 
-# Let's get the code and save it
-if args.save_code:
-    out_file = os.path.join(args.save_path, "output_cad_code.py")
-    outputs.code.save(out_file)
+try:
+    # Let's get the code and save it
+    if args.save_code:
+        out_file = os.path.join(args.save_path, "output_cad_code.py")
+        outputs.code.save(out_file)
+finally:
+    print("")
 
 # get the code as a single object
 out_code = outputs.code
-
-# Let's get the variables and save it
-if args.save_var:
-    out_file = os.path.join(args.save_path, "output_cad_vars.py")
-    outputs.data.save(out_file)
+print(out_code.code)
 
 # get the variables as a single object
 out_vars = outputs.data

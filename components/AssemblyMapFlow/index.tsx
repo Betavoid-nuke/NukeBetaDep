@@ -136,11 +136,6 @@ function onClickGen(){
   tryzip();
 }
 
-//calling API of AI Engine
-function TEST(){
-  callPythonAPI();
-}
-
 
 
 
@@ -350,11 +345,6 @@ function FlowWithProvider() {
       {/* Download folder structure */}
       <div className="text-light-1" style={{ position: 'fixed', bottom: '0', right: '300px', padding:"50px" }}>
         <Button onClick={onClickGen} variant="outline" className="AssemblyBtn">Download Files</Button>
-      </div>
-
-      {/* TEST */}
-      <div className="text-light-1" style={{ position: 'fixed', bottom: '0', right: '550px', padding:"50px" }}>
-        <Button onClick={TEST} variant="outline" className="AssemblyBtn">TEST</Button>
       </div>
 
     </ReactFlowProvider>
