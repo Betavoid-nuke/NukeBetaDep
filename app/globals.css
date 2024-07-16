@@ -600,3 +600,8 @@
   @apply bg-glassmorphism p-4 backdrop-blur-lg xs:px-7;
 
 }
+
+
+.menubtn:hover {
+  background-color: #27272a;
+}
