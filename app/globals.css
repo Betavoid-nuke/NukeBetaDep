@@ -131,7 +131,9 @@
   }
 
   .topbar {
-    @apply fixed top-0 z-30 flex w-full items-center justify-between bg-dark-2 px-6 py-3;
+    @apply fixed top-0 z-30 flex w-full border-b border-b-dark-4 items-center justify-between px-6 py-3;
+    background-color: #09090b;
+
   }
 
   .bottombar {
@@ -147,7 +149,8 @@
   }
 
   .leftsidebar {
-    @apply sticky left-0 top-0 z-20 flex h-screen w-fit flex-col justify-between overflow-auto border-r border-r-dark-4 bg-dark-2 pb-5 pt-28 max-md:hidden;
+    @apply sticky left-0 top-0 z-20 flex h-screen w-fit flex-col justify-between overflow-auto border-r border-r-dark-4 pb-5 pt-28 max-md:hidden;
+    background-color: #09090b;
   }
 
   .chatinput {
@@ -167,7 +170,7 @@
   .rightsidebar {
     @apply sticky right-0 top-0 z-20 flex h-screen w-fit flex-col justify-between gap-12 overflow-auto border-0 border-l-dark-4 px-2 pb-6 pt-28 pr-10 max-xl:hidden;
     width: 450px;
-    background-color: black;
+    background-color: #09090b;
   }
 }
 
@@ -183,16 +186,16 @@
   }
 
   .custom-scrollbar::-webkit-scrollbar-track {
-    background: #09090a;
+    background: #000000;
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: #5c5c7b;
+    background: #313131;
     border-radius: 50px;
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: #7878a3;
+    background: #252525;
   }
 }
 

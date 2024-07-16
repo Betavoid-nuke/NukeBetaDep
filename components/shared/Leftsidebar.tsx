@@ -26,7 +26,7 @@ function Leftsidebar() {
                             <Link 
                             href={link.route}
                             key={link.label}
-                            className={`leftsidebar_link ${isActive && 'bg-light-4'}`}>
+                            className={`leftsidebar_link ${isActive && ''}`} style={{ backgroundColor: isActive ? '#27272a' : 'transparent',}}>
 
                                 <Image 
                                 src={link.imgURL}
