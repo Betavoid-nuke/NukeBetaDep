@@ -62,15 +62,15 @@ function HomeHeader({userInfo}:props) {
           <DialogTrigger className="text-light-2">
 
             <div className="flex flex-row" style={{flexWrap:'wrap', justifyContent:'center', alignContent:'center'}}>
-              <div className="text-light-2 mr-3" style={{ fontSize: 22, alignItems:'center' }}>
+              <div className="text-light-2 mr-3" style={{ fontSize: 18, alignItems:'center' }}>
                 Create Post
               </div>
 
               <Image
                 src="/assets/addpro3.svg"
                 alt="projectPoster"
-                width={40}
-                height={40}
+                width={30}
+                height={30}
               />
             </div>
 

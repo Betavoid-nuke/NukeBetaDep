@@ -1,7 +1,6 @@
 
 import HomeHeader from "@/components/Homepageheader/HomeHeader";
 import ThreadCard from "@/components/cards/ThreadCard";
-import Posts from "@/components/homepage/Posts";
 import { fetchPost } from "@/lib/actions/thread.actions";
 import { fetchUser } from "@/lib/actions/user.action";
 import { currentUser } from "@clerk/nextjs";

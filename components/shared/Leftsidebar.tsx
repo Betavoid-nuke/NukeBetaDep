@@ -83,7 +83,7 @@ function Leftsidebar({ className }: SidebarProps) {
         //new nav bar
         <nav
           className={cn(
-            `relative hidden h-screen flex-none border-r z-10 pt-20 md:block sticky left-0 top-0 z-20`,
+            `relative hidden h-screen flex-none border-r border-r-dark-4 z-10 pt-20 md:block sticky left-0 top-0 z-20`,
             status && 'duration-500',
             !isMinimized ? 'w-72' : 'w-[72px]',
             className
@@ -112,3 +112,5 @@ function Leftsidebar({ className }: SidebarProps) {
 }
 
 export default Leftsidebar
+
+

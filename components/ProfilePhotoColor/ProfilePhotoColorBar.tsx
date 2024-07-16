@@ -73,7 +73,7 @@ const AverageColorDiv: React.FC<ImageProps> = ({ src, isCommentSection }) => {
   //based on weather we are printing this div on the comment or the main post, we will have to change the style of it, so it fits perfectly
   
   let divStyle = {
-    width: '1200px',
+    width: '100%',
     height: '1px',
     marginBottom:'1px',
     marginLeft:'0px',

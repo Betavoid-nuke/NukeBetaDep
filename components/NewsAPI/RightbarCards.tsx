@@ -60,15 +60,8 @@ const RightbarCards = ({alltitles, userInfo}:props) => {
     return null;
   }
 
-
-
-
   if(alltitles){ //impliment the react timeout thing here, i think the new api is not working in production as it is free for dev only
 
-
-
-
-  
     //articles, all of these are array
     const titles = alltitles.articles.map(article => article.title);
     const source = alltitles.articles.map(article => article.source);
@@ -80,20 +73,24 @@ const RightbarCards = ({alltitles, userInfo}:props) => {
     
     if (isHomePage) {
       return (
-        <section className="custom-scrollbar rightsidebar">
+        
+        <section className="custom-scrollbar rightsidebar border-l border-l-dark-4" style={{paddingLeft:'20px', paddingRight:'20px'}}>
+          
           <div className="flex flex-1 flex-col justify-start" style={{ padding: '20px', display:'contents' }}>
             <div style={{display:'flex', justifyContent:'center', alignContent:'center'}}>
               <HomeHeader userInfo={userInfo} />
             </div>
           </div>
+
           <div className="flex flex-1 flex-col justify-start" style={{ border: '1px', borderColor: '#232323', borderRadius: '20px', borderStyle: 'solid', padding: '20px', overflowY:'hidden' }}>
-                <h3 className="text-heading4-small text-light-1">Suggested Community</h3>
-
-                <ScrollArea className="text-light-1 h-20 w-full" style={{ overflowWrap: "anywhere", overflowY: "auto", height:'100%', marginTop:'20px' }}>
-
-                </ScrollArea>
+            
+            <h3 className="text-heading4-small text-light-1">Suggested Community</h3>
+            
+            <ScrollArea className="text-light-1 h-20 w-full" style={{ overflowWrap: "anywhere", overflowY: "auto", height:'100%', marginTop:'20px' }}>
+            </ScrollArea>
 
           </div>
+
           <div className="flex flex-1 flex-col justify-start" style={{ border: '1px', borderColor: '#232323', borderRadius: '20px', borderStyle: 'solid', padding: '20px', overflowY:'hidden' }}>
             <h3 className="text-heading4-small text-light-1">Latest News</h3>
             <ScrollArea className="text-light-1 h-20 w-full" style={{ overflowWrap: "anywhere", overflowY: "auto", height:'100%', marginTop:'20px' }}>
@@ -115,7 +112,9 @@ const RightbarCards = ({alltitles, userInfo}:props) => {
               ))}
             </ScrollArea>
           </div>
+          
         </section>
+
       );
     } else {
       return <div></div>;

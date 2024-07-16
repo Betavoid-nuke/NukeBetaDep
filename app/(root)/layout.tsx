@@ -61,11 +61,13 @@ export default function RootLayout({
 
           <main className="flex flex-row" id="mainscreen">
             <Leftsidebar />
+
             <section className="main-container" id='maincontainer' style={{backgroundColor:'#09090b'}}>
-              <div className="w-full max-w-4xl" style={{ maxWidth: 1200, height:'100%' }}>
+              <div className="w-full" style={{ height:'100%', display:'table', width:'100%' }}>
                 {children}
               </div>
             </section>
+
             <Rightsidebar />
           </main>
 
