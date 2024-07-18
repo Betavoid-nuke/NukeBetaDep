@@ -120,7 +120,7 @@ export async function fetchUsers({
   pageSize = 20,
   sortBy = "desc",
 }: {
-  userId: string;
+  userId: string | undefined;
   searchString?: string;
   pageNumber?: number;
   pageSize?: number;
