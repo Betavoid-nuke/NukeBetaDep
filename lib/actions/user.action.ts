@@ -204,3 +204,34 @@ export async function getCurrentUserData(){
   const userData = await currentUser();
   return userData;
 }
+
+
+interface PropsFollow {
+  userIdForFollow: string;
+  followerId: string;
+}
+
+export async function addFollower({
+  userIdForFollow,
+  followerId,
+}: PropsFollow): Promise<void> {
+  try {
+    await connectToDB();
+
+    await User.findByIdAndUpdate(
+      userIdForFollow,
+      { $push: { following: followerId } },
+      { new: true, useFindAndModify: false }
+    );
+
+    await User.findByIdAndUpdate(
+      followerId,
+      { $push: { followers: userIdForFollow } },
+      { new: true, useFindAndModify: false }
+    );
+
+    console.log('Followed');
+  } catch (error: any) {
+    throw new Error(`Failed to create/update user: ${error.message}`);
+  }
+}
