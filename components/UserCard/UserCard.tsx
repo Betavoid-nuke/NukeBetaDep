@@ -7,6 +7,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { ReloadIcon } from "@radix-ui/react-icons"
 import Link from "next/link"
+import { Skeleton } from "@/components/ui/skeleton"
 
 interface props {
     userId: string,
@@ -49,41 +50,52 @@ const UserCard = ({userId, currentUserId, userName, userBio, isPro, userImage, c
 
   return (
     <div className="card-container tsxt-black mb-10">
-        
-        {isPro ? (
-            <span className="pro" style={{marginTop:'-42px', marginLeft:'74px'}}>PRO</span>
-        ) : null}
 
-        <Link href={`/profile/${useridfordetch}`}>
-            <img className="round mb-2" style={{display:'inline-flex', height:'100px', width:'100px'}} src={userImage} alt="user" />
-        </Link>
+        {isLoading ? (
 
-        <h3 className='mb-4' style={{fontWeight:'bolder', fontSize:'20px', color:'white'}}>{userName}</h3>
-        <p className='mr-2 ml-2 mb-4' style={{color:'gray'}}>{userBio}</p>
-        <div className="buttons mb-5">
-          {isLoading ? (
-            <Button disabled>
-              <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
-              Loading
-            </Button>
+            <div className="flex flex-col space-y-3">
+              <Skeleton className="h-[150px] w-[250px] rounded-xl" />
+              <div className="space-y-2">
+                <Skeleton className="h-4 w-[250px]" />
+                <Skeleton className="h-4 w-[200px]" />
+              </div>
+            </div>
+
           ) : (
             <>
-              {followedByCurrent ? (
-                <Button disabled onClick={followthisuser} variant="outline" style={{ color: 'black' }}>
-                  Followed
-                </Button>
-              ) : (
-                <Button onClick={followthisuser} variant="outline" style={{ color: 'black' }}>
-                  Follow
-                </Button>
-              )}
+        
+                {isPro ? (
+                    <span className="pro" style={{marginTop:'-42px', marginLeft:'74px'}}>PRO</span>
+                ) : null}
 
-              <Button className='ml-5 h-6 w-6' variant="outline" size="icon" style={{ backgroundColor: 'transparent' }}>
-                <ChevronRightIcon className="h-4 w-4" />
-              </Button>
+                <Link href={`/profile/${useridfordetch}`}>
+                    <img className="round mb-2" style={{display:'inline-flex', height:'100px', width:'100px'}} src={userImage} alt="user" />
+                </Link>
+            
+                <h3 className='mb-4' style={{fontWeight:'bolder', fontSize:'20px', color:'white'}}>{userName}</h3>
+                <p className='mr-2 ml-2 mb-4' style={{color:'gray'}}>{userBio}</p>
+
+                <div className="buttons mb-5">
+            
+                    {followedByCurrent ? (
+                      <Button disabled onClick={followthisuser} variant="outline" style={{ color: 'black' }}>
+                        Followed
+                      </Button>
+                    ) : (
+                      <Button onClick={followthisuser} variant="outline" style={{ color: 'black' }}>
+                        Follow
+                      </Button>
+                    )}
+    
+                    <Button className='ml-5 h-6 w-6' variant="outline" size="icon" style={{ backgroundColor: 'transparent' }}>
+                      <ChevronRightIcon className="h-4 w-4" />
+                    </Button>
+                  
+                </div>
+
             </>
-          )}
-        </div>
+        )}
+
     </div>
   )
 }
