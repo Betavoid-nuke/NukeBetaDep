@@ -13,6 +13,7 @@ import React, { useState } from "react";
 import ChatinputFooter from "@/components/chatinputfooter/ChatinputFooter";
 import NextTopLoader from 'nextjs-toploader';
 import { Toaster } from "@/components/ui/sonner";
+import "@uploadthing/react/styles.css";
 
 
 

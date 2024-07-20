@@ -235,3 +235,31 @@ export async function addFollower({
     throw new Error(`Failed to create/update user: ${error.message}`);
   }
 }
+
+
+
+
+interface Paramsposter {
+  userId: string;
+  posterimage: string;
+}
+
+export async function uploadPoster({
+  userId,
+  posterimage
+}: Paramsposter): Promise<void> {
+  try {
+    connectToDB();
+
+    await User.findOneAndUpdate(
+      { id: userId },
+      {
+        posterimage
+      },
+      { upsert: true }
+    );
+
+  } catch (error: any) {
+    throw new Error(`Failed to create/update user: ${error.message}`);
+  }
+}

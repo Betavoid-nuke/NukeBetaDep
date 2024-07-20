@@ -9,6 +9,7 @@ interface Props {
   imgUrl: string;
   bio: string;
   type?: string;
+  userid:string;
 }
 
 function ProfileHeader({
@@ -19,6 +20,7 @@ function ProfileHeader({
   imgUrl,
   bio,
   type,
+  userid
 }: Props) {
 
   return (
@@ -49,7 +51,7 @@ function ProfileHeader({
             </div>
 
             {accountId === authUserId && type !== "Community" && (
-              <Link href="/profile/edit">
+              <Link href={`/profileedit/${userid}`}>
                 <div className="flex cursor-pointer gap-3 rounded-lg bg-dark-3 px-4 py-2">
                   <Image
                     src="/assets/edit.svg"

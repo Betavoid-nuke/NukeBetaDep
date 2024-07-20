@@ -7,3 +7,7 @@ export const UserValidation = z.object({
     bio: z.string().min(5, { message: 'Minimun 5 characters required' }).max(5000),
 
 })
+
+export const UserPoster = z.object({
+    Profile_Poster: z.string().url().nonempty()
+})

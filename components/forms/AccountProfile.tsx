@@ -15,6 +15,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -38,10 +39,10 @@ interface Props {
 }
 
 const AccountProfile = ({ user, btnTitle }: Props) => {
+
   const router = useRouter();
   const pathname = usePathname();
   const { startUpload } = useUploadThing("media");
-
   const [files, setFiles] = useState<File[]>([]);
 
   const form = useForm<z.infer<typeof UserValidation>>({
@@ -55,15 +56,12 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
   });
 
   const onSubmit = async (values: z.infer<typeof UserValidation>) => {
-    const blob = values.profile_photo;
 
+    const blob = values.profile_photo;
     const hasImageChanged = isBase64Image(blob);
+
     if (hasImageChanged) {
       const imgRes = await startUpload(files);
-      console.log("uploaded profile picture");
-      console.log(blob);
-      
-
       if (imgRes && imgRes[0].fileUrl) {
         values.profile_photo = imgRes[0].fileUrl;
       }
@@ -83,6 +81,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
     } else {
       router.push("/");
     }
+
   };
 
   const handleImage = (
@@ -106,6 +105,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
 
       fileReader.readAsDataURL(file);
     }
+
   };
 
   return (

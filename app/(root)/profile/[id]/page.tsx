@@ -11,14 +11,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { fetchUser } from "@/lib/actions/user.action";
 import Link from "next/link";
 
-
-
-
-
-
 // @mui material components
 import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
+import PhotoUploadButton from "@/components/forms/Photouploader";
 
 
 
@@ -26,18 +22,30 @@ import Divider from "@mui/material/Divider";
 
 
 async function Page({ params }: { params: { id: string } }) {
+
+  
   const user = await currentUser();
   if (!user) return null;
 
   const userInfo = await fetchUser(params.id);
   if (!userInfo?.onboarded) redirect("/onboarding");
 
+  const userData = {
+    id: user.id,
+    objectId: userInfo?._id,
+    username: userInfo ? userInfo?.username : user.username,
+    name: userInfo ? userInfo?.name : user.firstName ?? "",
+    bio: userInfo ? userInfo?.bio : "",
+    image: userInfo ? userInfo?.image : user.imageUrl,
+    poster: userInfo?.posterimage
+  };
+  
   return (
     <section>
       
       <div className="posterforprofileCont">
         <Image
-          src={userInfo.image}
+          src={userInfo.posterimage}
           alt="poster"
           width={1080}
           height={100}
@@ -52,6 +60,7 @@ async function Page({ params }: { params: { id: string } }) {
         username={userInfo.username}
         imgUrl={userInfo.image}
         bio={userInfo.bio}
+        userid={params.id}
       />
 
       <div className="mt-9">
@@ -112,8 +121,6 @@ async function Page({ params }: { params: { id: string } }) {
                   {tab.label}
                 </div>
               )}
-
-
 
 
             </TabsContent>

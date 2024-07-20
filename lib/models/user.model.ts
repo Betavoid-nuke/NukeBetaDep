@@ -15,6 +15,7 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
   image: String,
+  posterimage: String,
   bio: String,
   threads: [
     {

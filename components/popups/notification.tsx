@@ -7,6 +7,8 @@ interface Props {
   Message:string
 }
 
+
+
 export function ToastSimple({Message}:Props) {
   const { toast } = useToast();
 
@@ -23,6 +25,25 @@ export function ToastSimple({Message}:Props) {
       }}
     >
       Post
+    </Button>
+  )
+}
+
+export function ToastMessage({Message}:Props) {
+  const { toast } = useToast();
+
+  return (
+    <Button
+      className='bg-transparent toastmsg x-1 y-1'
+      style={{border:'none', position:'absolute'}}
+      variant="outline"
+      onClick={() => {
+        toast({
+          className: "bg-black text-light-1 border-gray-700",
+          description: Message,
+        })
+      }}
+    >
     </Button>
   )
 }
