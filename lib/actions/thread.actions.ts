@@ -92,6 +92,17 @@ export async function fetchProject(pageNumber = 1, pageSize = 50) {
   return { projects, isNext }
 }
 
+export async function fetchallProject() {
+  connectToDB();
+  // get all the threads from the db, each thread has a parent id, if the thread is a comment it will have a parent id, so here we are just getting the parent threds by giving condition - parantId: { $in: [null, undefined] }
+  const postsQuery = Projects.find()
+      .sort({ createdAt: 'desc'})
+      .populate({ path: 'author', model: User })
+  const titalPostCount = await Projects.countDocuments({ parantId: { $in: [null, undefined] } })
+  const projects = await postsQuery.exec();
+  return { projects }
+}
+
 
 export async function fetchAssemblies(pageNumber = 1, pageSize = 50) {
 

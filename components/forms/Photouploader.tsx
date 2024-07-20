@@ -84,7 +84,7 @@ function PhotoUploadButton({ user }: Props) {
       // Call updateuser when files is updated
       const timer = setTimeout(() => {
         updateuser();
-      }, 8000);
+      }, 500);
 
       // Clean up timer on component unmount
       return () => clearTimeout(timer);
@@ -102,18 +102,19 @@ function PhotoUploadButton({ user }: Props) {
 
         <UploadDropzone<OurFileRouter>
           endpoint="media"
-        onClientUploadComplete={(res) => {
-          if (res) {
-            res.forEach((file) => {
-              console.log("File URL:" + file.url);
-              setFiles(file.url);
-            });
-          }
-        }}
-        onUploadError={(error: Error) => {
+          onClientUploadComplete={(res) => {
+            console.log(res);
+            if (res) {
+              res.forEach((file) => {
+                console.log("File URL:" + file.url);
+                setFiles(file.url);
+              });
+            }
+          }}
+          onUploadError={(error: Error) => {
           alert(`ERROR! ${error.message}`);
-        }}
-        onUploadBegin={(name) => {
+          }}
+          onUploadBegin={(name) => {
           // Do something once upload begins
           console.log("Uploading: ", name);
           }}

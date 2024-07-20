@@ -3,3 +3,9 @@
 3. number of followers on profile
 4. number of followers on the user cards
 5. followers feed for the home to show posts from the people user follows
+6. when user didnt uploaded any poster, use a cool placeholder
+
+
+new ideas-
+1. AI share function, go to 3 dots on post, hit share, and genrate a post for linkedin or other platforms
+    and user copy past the post and also have the url of the nuke post in the genrated post.

@@ -21,15 +21,51 @@ import PhotoUploadButton from "@/components/forms/Photouploader";
 
 
 
+import {
+  Activity,
+  ArrowUpRight,
+  CreditCard,
+  DollarSign,
+  Menu,
+  Package2,
+  Search,
+  Users,
+} from "lucide-react"
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/components/ui/avatar"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { Input } from "@/components/ui/input"
+import { fetchallProject, fetchProject } from "@/lib/actions/thread.actions";
+
+
+
+
 async function Page({ params }: { params: { id: string } }) {
 
-  
+  //user data
   const user = await currentUser();
   if (!user) return null;
-
   const userInfo = await fetchUser(params.id);
   if (!userInfo?.onboarded) redirect("/onboarding");
-
   const userData = {
     id: user.id,
     objectId: userInfo?._id,
@@ -37,8 +73,23 @@ async function Page({ params }: { params: { id: string } }) {
     name: userInfo ? userInfo?.name : user.firstName ?? "",
     bio: userInfo ? userInfo?.bio : "",
     image: userInfo ? userInfo?.image : user.imageUrl,
-    poster: userInfo?.posterimage
+    poster: userInfo?.posterimage,
+    communities: userInfo?.communities,
+    following: userInfo?.following,
+    followers: userInfo?.followers,
+    posts: userInfo?.threads,
   };
+
+
+  //project data
+  const usersprojects=[];
+  const result = await fetchallProject();
+  for (let index = 0; index < result.projects.length; index++) {
+    // getting all projects owned by the current user
+    if(result.projects[index].author.id == user.id) {
+      usersprojects.push(result.projects[index]);
+    }
+  }
   
   return (
     <section>
@@ -62,6 +113,80 @@ async function Page({ params }: { params: { id: string } }) {
         bio={userInfo.bio}
         userid={params.id}
       />
+
+      <div className="flex flex-row gap-10 mt-5 mb-5" style={{width:'100%', display:'flex', justifyContent:'center'}}>
+
+        <Card x-chunk="dashboard-01-chunk-0 text-light-1" style={{background:'transparent', borderColor:'#1b1b1b', borderRadius:'15px', width:'100%', display:'flex', justifyContent:'center', alignItems:'center', flexWrap:'wrap', flexDirection:'column'}}>
+
+          <CardHeader className="flex flex-row items-center space-y-0 pb-2">
+            <CardTitle className="text-light-1 text-sm font-medium" style={{borderRadius:'inherit'}}>
+              Followers
+            </CardTitle>
+          </CardHeader>
+
+          <CardContent>
+            <div className="text-light-1 font-normal" style={{borderRadius:'inherit', fontSize:'24px'}}>{userData.followers.length}</div>
+          </CardContent>
+
+        </Card>
+
+        <Card x-chunk="dashboard-01-chunk-0 text-light-1" style={{background:'transparent', borderColor:'#1b1b1b', borderRadius:'15px', width:'100%', display:'flex', justifyContent:'center', alignItems:'center', flexWrap:'wrap', flexDirection:'column'}}>
+
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-light-1 text-sm font-medium" style={{borderRadius:'inherit'}}>
+              Following
+            </CardTitle>
+          </CardHeader>
+
+          <CardContent>
+            <div className="text-light-1 text-2xl font-normal" style={{borderRadius:'inherit', fontSize:'24px'}}>{userData.following.length}</div>
+          </CardContent>
+
+        </Card>
+
+        <Card x-chunk="dashboard-01-chunk-0 text-light-1" style={{background:'transparent', borderColor:'#1b1b1b', borderRadius:'15px', width:'100%', display:'flex', justifyContent:'center', alignItems:'center', flexWrap:'wrap', flexDirection:'column'}}>
+
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-light-1 text-sm font-medium" style={{borderRadius:'inherit'}}>
+              Projects
+            </CardTitle>
+          </CardHeader>
+
+          <CardContent>
+            <div className="text-light-1 text-2xl font-normal" style={{borderRadius:'inherit', fontSize:'24px'}}>{usersprojects.length}</div>
+          </CardContent>
+
+        </Card>
+
+        <Card x-chunk="dashboard-01-chunk-0 text-light-1" style={{background:'transparent', borderColor:'#1b1b1b', borderRadius:'15px', width:'100%', display:'flex', justifyContent:'center', alignItems:'center', flexWrap:'wrap', flexDirection:'column'}}>
+
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-light-1 text-sm font-medium" style={{borderRadius:'inherit'}}>
+              Posts
+            </CardTitle>
+          </CardHeader>
+
+          <CardContent>
+            <div className="text-light-1 text-2xl font-normal" style={{borderRadius:'inherit', fontSize:'24px'}}>{userData.posts.length}</div>
+          </CardContent>
+
+        </Card>
+
+        <Card x-chunk="dashboard-01-chunk-0 text-light-1" style={{background:'transparent', borderColor:'#1b1b1b', borderRadius:'15px', width:'100%', display:'flex', justifyContent:'center', alignItems:'center', flexWrap:'wrap', flexDirection:'column'}}>
+
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-light-1 text-sm font-medium" style={{borderRadius:'inherit'}}>
+              Organisations
+            </CardTitle>
+          </CardHeader>
+
+          <CardContent>
+            <div className="text-light-1 text-2xl font-normal" style={{borderRadius:'inherit', fontSize:'24px'}}>0</div>
+          </CardContent>
+
+        </Card>
+
+      </div>
 
       <div className="mt-9">
         <Tabs defaultValue="threads" className="w-full">

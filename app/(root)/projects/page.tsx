@@ -25,6 +25,7 @@ interface Props {
 
 async function newproject({ authorid }: Props) {
 
+  //user data
   const result = await fetchProject(1, 30);
   const user = await currentUser();
   if (!user) return null;
@@ -38,6 +39,7 @@ async function newproject({ authorid }: Props) {
     image: userInfo ? userInfo?.image : user.imageUrl,
   };
 
+  //project data
   const hasparent = [];
   const usersprojects=[];
   var printempty = true;
@@ -51,6 +53,7 @@ async function newproject({ authorid }: Props) {
       }
     }
   }
+  
   if(hasparent.length !== usersprojects.length){
     printempty = false
   }
@@ -235,6 +238,7 @@ async function newproject({ authorid }: Props) {
 
     </div>
   );
+
 }
 
 export default newproject;
