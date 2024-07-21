@@ -9,3 +9,5 @@
 new ideas-
 1. AI share function, go to 3 dots on post, hit share, and genrate a post for linkedin or other platforms
     and user copy past the post and also have the url of the nuke post in the genrated post.
+
+in platform post generation, and ability to share to other platforms with watermark on generated image for the post.
