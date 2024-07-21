@@ -80,7 +80,6 @@ async function Page({ params }: { params: { id: string } }) {
     posts: userInfo?.threads,
   };
 
-
   //project data
   const usersprojects=[];
   const result = await fetchallProject();
@@ -90,13 +89,29 @@ async function Page({ params }: { params: { id: string } }) {
       usersprojects.push(result.projects[index]);
     }
   }
+
+  //incase user didnt uploaded poster, this will pick a random poster
+  const getRandomNumber = (): number => {
+    return Math.floor(Math.random() * 8);
+  };
+  const photoPaths = [
+    '/assets/posterPlaceholder/1.jpg',
+    '/assets/posterPlaceholder/2.jpg',
+    '/assets/posterPlaceholder/3.jpg',
+    '/assets/posterPlaceholder/4.jpg',
+    '/assets/posterPlaceholder/5.jpg',
+    '/assets/posterPlaceholder/6.jpg',
+    '/assets/posterPlaceholder/7.jpg',
+    '/assets/posterPlaceholder/8.jpg',
+  ];
+  const randomPoster = photoPaths[getRandomNumber()];
   
   return (
     <section>
-      
+
       <div className="posterforprofileCont">
         <Image
-          src={userInfo.posterimage}
+          src={userInfo.posterimage && userInfo.posterimage !== "" ? userInfo.posterimage : randomPoster}
           alt="poster"
           width={1080}
           height={100}
