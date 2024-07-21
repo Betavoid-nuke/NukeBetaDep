@@ -16,11 +16,6 @@ import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
 import PhotoUploadButton from "@/components/forms/Photouploader";
 
-
-
-
-
-
 import {
   Activity,
   ArrowUpRight,
@@ -30,6 +25,7 @@ import {
   Package2,
   Search,
   Users,
+  ArrowRightCircle
 } from "lucide-react"
 import {
   Avatar,
@@ -45,17 +41,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
 import { Input } from "@/components/ui/input"
 import { fetchallProject, fetchProject } from "@/lib/actions/thread.actions";
-
+import { Icons } from '@/components/../constants/icons';
 
 
 
@@ -105,6 +93,8 @@ async function Page({ params }: { params: { id: string } }) {
     '/assets/posterPlaceholder/8.jpg',
   ];
   const randomPoster = photoPaths[getRandomNumber()];
+
+  const Icon = Icons['arrowRight'];
   
   return (
     <section>
@@ -132,7 +122,11 @@ async function Page({ params }: { params: { id: string } }) {
       <div className="flex flex-row gap-10 mt-5 mb-5" style={{width:'100%', display:'flex', justifyContent:'center'}}>
 
         <Card x-chunk="dashboard-01-chunk-0 text-light-1" style={{background:'transparent', borderColor:'#1b1b1b', borderRadius:'15px', width:'100%', display:'flex', justifyContent:'center', alignItems:'center', flexWrap:'wrap', flexDirection:'column'}}>
-
+          
+          <Link href={'/followers'} className="hoverEffect_scale" style={{marginLeft:'190px', marginTop:'16px', marginBottom:'-36px'}}>
+            <Icon className={` ml-3 size-5`} color="#8f8f8f" />
+          </Link>
+  
           <CardHeader className="flex flex-row items-center space-y-0 pb-2">
             <CardTitle className="text-light-1 text-sm font-medium" style={{borderRadius:'inherit'}}>
               Followers
@@ -142,10 +136,14 @@ async function Page({ params }: { params: { id: string } }) {
           <CardContent>
             <div className="text-light-1 font-normal" style={{borderRadius:'inherit', fontSize:'24px'}}>{userData.followers.length}</div>
           </CardContent>
-
+          
         </Card>
-
+      
         <Card x-chunk="dashboard-01-chunk-0 text-light-1" style={{background:'transparent', borderColor:'#1b1b1b', borderRadius:'15px', width:'100%', display:'flex', justifyContent:'center', alignItems:'center', flexWrap:'wrap', flexDirection:'column'}}>
+          
+          <Link href={'/followers'} className="hoverEffect_scale" style={{marginLeft:'190px', marginTop:'16px', marginBottom:'-36px'}}>
+            <Icon className={` ml-3 size-5`} color="#8f8f8f" />
+          </Link>
 
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-light-1 text-sm font-medium" style={{borderRadius:'inherit'}}>
@@ -156,10 +154,14 @@ async function Page({ params }: { params: { id: string } }) {
           <CardContent>
             <div className="text-light-1 text-2xl font-normal" style={{borderRadius:'inherit', fontSize:'24px'}}>{userData.following.length}</div>
           </CardContent>
-
+          
         </Card>
-
+      
         <Card x-chunk="dashboard-01-chunk-0 text-light-1" style={{background:'transparent', borderColor:'#1b1b1b', borderRadius:'15px', width:'100%', display:'flex', justifyContent:'center', alignItems:'center', flexWrap:'wrap', flexDirection:'column'}}>
+
+          <Link href={'/projects'} className="hoverEffect_scale" style={{marginLeft:'190px', marginTop:'16px', marginBottom:'-36px'}}>
+            <Icon className={` ml-3 size-5`} color="#8f8f8f" />
+          </Link>
 
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-light-1 text-sm font-medium" style={{borderRadius:'inherit'}}>
@@ -174,17 +176,17 @@ async function Page({ params }: { params: { id: string } }) {
         </Card>
 
         <Card x-chunk="dashboard-01-chunk-0 text-light-1" style={{background:'transparent', borderColor:'#1b1b1b', borderRadius:'15px', width:'100%', display:'flex', justifyContent:'center', alignItems:'center', flexWrap:'wrap', flexDirection:'column'}}>
-
+          <Link href={'/'} className="hoverEffect_scale" style={{marginLeft:'190px', marginTop:'16px', marginBottom:'-36px'}}>
+            <Icon className={` ml-3 size-5`} color="#8f8f8f" />
+          </Link>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-light-1 text-sm font-medium" style={{borderRadius:'inherit'}}>
               Posts
             </CardTitle>
           </CardHeader>
-
           <CardContent>
             <div className="text-light-1 text-2xl font-normal" style={{borderRadius:'inherit', fontSize:'24px'}}>{userData.posts.length}</div>
           </CardContent>
-
         </Card>
 
         <Card x-chunk="dashboard-01-chunk-0 text-light-1" style={{background:'transparent', borderColor:'#1b1b1b', borderRadius:'15px', width:'100%', display:'flex', justifyContent:'center', alignItems:'center', flexWrap:'wrap', flexDirection:'column'}}>

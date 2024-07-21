@@ -549,7 +549,7 @@
 
 
 .colorpicker {
-  background-color: #1b1b1b;
+  background-color: #8f8f8f;
 }
 
 
@@ -678,4 +678,14 @@
 	font-size: 12px;
 	margin: 0 7px 7px 0;
 	padding: 7px;
+}
+
+
+
+.hoverEffect_scale{
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.hoverEffect_scale:hover {
+  transform: scale(1.3);
 }

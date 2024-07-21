@@ -1,9 +1,7 @@
 1. unfollow button
-2. number of followers on profile
-3. number of followers on profile
 4. number of followers on the user cards
 5. followers feed for the home to show posts from the people user follows
-6. when user didnt uploaded any poster, use a cool placeholder
+6. a popup to show followers and following on the profile
 
 
 new ideas-
