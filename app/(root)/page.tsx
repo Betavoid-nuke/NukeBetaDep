@@ -1,9 +1,11 @@
 
 import { FeedTabs } from "@/components/FeedBar/Feedbar";
 import HomeHeader from "@/components/Homepageheader/HomeHeader";
+import ScrollToTopButton from "@/components/ScrollToTopButton/ScrollToTopButton";
 import ThreadCard from "@/components/cards/ThreadCard";
 import { fetchPost } from "@/lib/actions/thread.actions";
 import { fetchUser } from "@/lib/actions/user.action";
+import { cn } from "@/lib/utils";
 import { currentUser } from "@clerk/nextjs";
 import { User } from "@clerk/nextjs/dist/types/server";
 import { redirect } from "next/navigation";
@@ -31,8 +33,10 @@ export default async function Home() {
   // Pass user and fetched posts to the client component
   return (
     <main>
-      <FeedTabs />
-      <div className='flex flex-col gap-10 text-light-1' style={{ marginTop: "20px" }}>
+      
+      <FeedTabs posts={result} user={user} />
+      
+      {/* <div className='flex flex-col gap-10 text-light-1' style={{ marginTop: "20px" }}>
         {result.posts.length === 0 ? (
           <p className='no-result'>No posts found</p>
         ) : (
@@ -57,7 +61,8 @@ export default async function Home() {
           </>
 
         )}
-    </div>
+      </div> */}
+  
     </main>
   );
 

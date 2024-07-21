@@ -9,6 +9,8 @@ import Image from "next/image";
 import HomeHeader from '../Homepageheader/HomeHeader';
 import { User } from '@clerk/nextjs/dist/types/server';
 import mongoose from 'mongoose';
+import ScrollToTopButton from '../ScrollToTopButton/ScrollToTopButton';
+import { cn } from '@/lib/utils';
 
 
 interface Article {
@@ -73,25 +75,32 @@ const RightbarCards = ({alltitles, userInfo}:props) => {
     
     if (isHomePage) {
       return (
-        
-        <section className="custom-scrollbar rightsidebar border-l border-l-dark-4" style={{paddingLeft:'20px', paddingRight:'20px'}}>
-          
-          <div className="flex flex-1 flex-col justify-start" style={{ padding: '20px', display:'contents' }}>
+        <>
+
+          <section className="custom-scrollbar rightsidebar border-l border-l-dark-4" style={{paddingLeft:'20px', paddingRight:'20px', overflow:'visible'}}>
+
+            <div className={cn(
+              'absolute top-20 cursor-pointer'
+            )} style={{right:'386px', zIndex:'30'}}>
+              <ScrollToTopButton />
+            </div>
+
+            <div className="flex flex-1 flex-col justify-start" style={{ padding: '20px', display:'contents' }}>
             <div style={{display:'flex', justifyContent:'center', alignContent:'center'}}>
               <HomeHeader userInfo={userInfo} />
             </div>
-          </div>
+            </div>
 
-          <div className="flex flex-1 flex-col justify-start" style={{ border: '1px', borderColor: '#232323', borderRadius: '20px', borderStyle: 'solid', padding: '20px', overflowY:'hidden' }}>
+            <div className="flex flex-1 flex-col justify-start" style={{ border: '1px', borderColor: '#232323', borderRadius: '20px', borderStyle: 'solid', padding: '20px', overflowY:'hidden' }}>
             
             <h3 className="text-heading4-small text-light-1">Suggested Community</h3>
             
             <ScrollArea className="text-light-1 h-20 w-full" style={{ overflowWrap: "anywhere", overflowY: "auto", height:'100%', marginTop:'20px' }}>
             </ScrollArea>
 
-          </div>
+            </div>
 
-          <div className="flex flex-1 flex-col justify-start" style={{ border: '1px', borderColor: '#232323', borderRadius: '20px', borderStyle: 'solid', padding: '20px', overflowY:'hidden' }}>
+            <div className="flex flex-1 flex-col justify-start" style={{ border: '1px', borderColor: '#232323', borderRadius: '20px', borderStyle: 'solid', padding: '20px', overflowY:'hidden' }}>
             <h3 className="text-heading4-small text-light-1">Latest News</h3>
             <ScrollArea className="text-light-1 h-20 w-full" style={{ overflowWrap: "anywhere", overflowY: "auto", height:'100%', marginTop:'20px' }}>
               {titles.map((title, index) => (
@@ -111,10 +120,11 @@ const RightbarCards = ({alltitles, userInfo}:props) => {
                 </div>
               ))}
             </ScrollArea>
-          </div>
-          
-        </section>
+            </div>
+              
+          </section>
 
+        </>
       );
     } else {
       return <div></div>;

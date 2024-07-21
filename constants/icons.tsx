@@ -1,6 +1,12 @@
+import { ArrowUpIcon } from '@radix-ui/react-icons';
 import {
     AlertTriangle,
+    ArrowBigUp,
+    ArrowBigUpIcon,
     ArrowRight,
+    ArrowUp,
+    ArrowUp10,
+    ArrowUpCircle,
     Check,
     ChevronLeft,
     ChevronRight,
@@ -60,6 +66,7 @@ import {
     sun: SunMedium,
     moon: Moon,
     laptop: Laptop,
+    arrowup: ArrowUpCircle,
     gitHub: ({ ...props }: LucideProps) => (
       <svg
         aria-hidden="true"

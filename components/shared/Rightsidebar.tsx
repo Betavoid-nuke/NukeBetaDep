@@ -7,6 +7,8 @@ import { currentUser } from '@clerk/nextjs';
 import { fetchUser, getCurrentUserData } from '@/lib/actions/user.action';
 import React, { useState, useEffect } from 'react';
 import { mockdata } from '../NewsAPI/MockData';
+import ScrollToTopButton from '../ScrollToTopButton/ScrollToTopButton';
+import { cn } from '@/lib/utils';
 
 interface NewsJSON {
   status: string;
