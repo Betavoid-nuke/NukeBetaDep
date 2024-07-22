@@ -37,9 +37,6 @@ export async function FollowingPopover({userImage,following,cuserid}:props) {
 
     //getting the mongo user data
     const userInfo = await fetchUser(cuserid);
-
-    console.log(following);
-    
     
     //getting all the users
     const response: { users: any[]; isNext: boolean; } = await fetchUsers({userId:userInfo._id});

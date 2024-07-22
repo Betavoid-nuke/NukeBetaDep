@@ -99,9 +99,6 @@ async function Page({ params }: { params: { id: string } }) {
   ];
   const randomPoster = photoPaths[getRandomNumber()];
   const Icon = Icons['arrowRight'];
-
-  console.log(userData);
-  
   
   return (
     <section>
