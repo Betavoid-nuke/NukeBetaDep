@@ -44,6 +44,8 @@ import {
 import { Input } from "@/components/ui/input"
 import { fetchallProject, fetchProject } from "@/lib/actions/thread.actions";
 import { Icons } from '@/components/../constants/icons';
+import { FollowerPopover } from "@/components/followersPopup/FollowersPopup";
+import { FollowingPopover } from "@/components/followingPopup/FollowingPopup";
 
 
 
@@ -55,6 +57,7 @@ async function Page({ params }: { params: { id: string } }) {
 
   const userInfo = await fetchUser(params.id);
   if (!userInfo?.onboarded) redirect("/onboarding");
+
   const userData = {
     id: user.id,
     objectId: userInfo?._id,
@@ -96,6 +99,9 @@ async function Page({ params }: { params: { id: string } }) {
   ];
   const randomPoster = photoPaths[getRandomNumber()];
   const Icon = Icons['arrowRight'];
+
+  console.log(userData);
+  
   
   return (
     <section>
@@ -128,6 +134,8 @@ async function Page({ params }: { params: { id: string } }) {
           <Link href={'/followers'} className="hoverEffect_scale" style={{marginLeft:'190px', marginTop:'16px', marginBottom:'-36px'}}>
             <Icon className={` ml-3 size-5`} color="#8f8f8f" />
           </Link>
+
+          <FollowerPopover userImage={userData.image} followers={userData.followers} cuserid={params.id} />
   
           <CardHeader className="flex flex-row items-center space-y-0 pb-2">
             <CardTitle className="text-light-1 text-sm font-medium" style={{borderRadius:'inherit'}}>
@@ -143,9 +151,7 @@ async function Page({ params }: { params: { id: string } }) {
       
         <Card x-chunk="dashboard-01-chunk-0 text-light-1" style={{background:'transparent', borderColor:'#1b1b1b', borderRadius:'15px', width:'100%', display:'flex', justifyContent:'center', alignItems:'center', flexWrap:'wrap', flexDirection:'column'}}>
           
-          <Link href={'/followers'} className="hoverEffect_scale" style={{marginLeft:'190px', marginTop:'16px', marginBottom:'-36px'}}>
-            <Icon className={` ml-3 size-5`} color="#8f8f8f" />
-          </Link>
+          <FollowingPopover userImage={userData.image} following={userData.following} cuserid={params.id} />
 
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-light-1 text-sm font-medium" style={{borderRadius:'inherit'}}>

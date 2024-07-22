@@ -69,7 +69,7 @@ const UserCard = ({userId, numoffollowers, currentUserId, userName, userBio, isP
                 ) : null}
 
                 <Link href={`/profile/${useridfordetch}`}>
-                    <img className="round mb-2" style={{display:'inline-flex', height:'100px', width:'100px'}} src={userImage} alt="user" />
+                  <img className="round mb-2" style={{display:'inline-flex', height:'100px', width:'100px'}} src={userImage} alt="user" />
                 </Link>
             
                 <h3 className='mb-4' style={{fontWeight:'bolder', fontSize:'20px', color:'white'}}>{userName}</h3>

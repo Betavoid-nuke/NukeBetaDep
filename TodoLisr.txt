@@ -1,5 +1,6 @@
 1. unfollow button
 6. a popup to show followers and following on the profile
+7. add more fields to onboarding form, like company role etc
 
 
 new ideas-
