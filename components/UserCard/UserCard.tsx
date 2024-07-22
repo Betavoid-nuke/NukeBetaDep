@@ -22,31 +22,30 @@ interface props {
 
 const UserCard = ({userId, currentUserId, userName, userBio, isPro, userImage, currentUserIdforfetch, useridfordetch}: props) => {
 
-    const followthisuser = async () => {
-        await addFollower({ userIdForFollow: currentUserId, followerId: userId });
-        checkIfFollowed();
-    }
+  const followthisuser = async () => {
+    await addFollower({ userIdForFollow: currentUserId, followerId: userId });
+    checkIfFollowed();
+  }
 
-    //check if the current user folled the user which is being printed in the card.
-    const [followedByCurrent, setFollowedByCurrent] = useState(false);
-    const [isLoading, setIsLoading] = useState(true);
-    async function checkIfFollowed() {
-
-        //get the mongo data for the current user
-        const userInfo = await fetchUser(currentUserIdforfetch);
-        
-        for (let index = 0; index < userInfo.following.length; index++) {
-            if(userInfo.following[index] == userId){
-                setFollowedByCurrent(true)
-            } else {
-            }
+  //check if the current user folled the user which is being printed in the card.
+  const [followedByCurrent, setFollowedByCurrent] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  async function checkIfFollowed() {
+    //get the mongo data for the current user
+    const userInfo = await fetchUser(currentUserIdforfetch);
+    
+    for (let index = 0; index < userInfo.following.length; index++) {
+        if(userInfo.following[index] == userId){
+            setFollowedByCurrent(true)
+        } else {
         }
-        setIsLoading(false);
     }
+    setIsLoading(false);
+  }
 
-    useEffect(() => {
+  useEffect(() => {
         checkIfFollowed();
-    }, []);
+  }, []);
 
   return (
     <div className="card-container tsxt-black mb-10">

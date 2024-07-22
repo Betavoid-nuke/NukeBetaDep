@@ -30,11 +30,10 @@ export default async function Home() {
   // Fetch posts
   const result = await fetchPost(1, 30);
 
-  // Pass user and fetched posts to the client component
   return (
     <main>
       
-      <FeedTabs posts={result} user={user} />
+      <FeedTabs posts={result} user={user} userinfo={userInfo} />
       
       {/* <div className='flex flex-col gap-10 text-light-1' style={{ marginTop: "20px" }}>
         {result.posts.length === 0 ? (

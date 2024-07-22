@@ -20,12 +20,23 @@ const Users = async () => {
 
   return (
     <div className="grid-container ml-20">
-      {response.users.map((user:any) =>
-        (
-          <UserCard userId={user._id} userBio={user.bio} userName={user.name} userImage={user.image} isPro={false} currentUserId={userInfo._id} currentUserIdforfetch={cuser.id} useridfordetch={user.id} />
-        )
+      {response.users.map((user: any) =>
+        user.id.toString() !== cuser.id.toString() ? (
+          <UserCard 
+            key={user.id} 
+            userId={user._id} 
+            userBio={user.bio} 
+            userName={user.name} 
+            userImage={user.image} 
+            isPro={false} 
+            currentUserId={userInfo._id} 
+            currentUserIdforfetch={cuser.id} 
+            useridfordetch={user.id} 
+          />
+        ) : null
       )}
     </div>
+
   );
 
 }

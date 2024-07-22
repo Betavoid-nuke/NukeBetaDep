@@ -24,9 +24,29 @@ interface props {
         isNext: boolean;
     },
     user: User | null;
+    userinfo: any;
 }
 
-export function FeedTabs({posts, user}:props) {
+export function FeedTabs({posts, user, userinfo}:props) {
+
+  const the_following = userinfo.following;
+
+  //getting ids of all the people user follows
+  var followers_id=[];
+  for (let index = 0; index < posts.posts.length; index++) {
+    followers_id.push(posts.posts[index].author?._id)
+  }
+
+  //sorting the posts, and storing posts from people user follows in a array
+  var FollowersPosts=[];
+  for (let i = 0; i < the_following.length; i++) {
+    for (let j = 0; j < followers_id.length; j++) {
+      if (followers_id[j].toString() === the_following[i].toString()) {
+        FollowersPosts.push(posts.posts[j]);
+      }
+    }
+  }
+
   return (
     <Tabs defaultValue="account" className="w-[400px] bg-black text-white" style={{marginBottom:'50px', width:'100%', display:'flex', justifyContent:'center', backgroundColor:'transparent', flexDirection:'column'}}>
       
@@ -37,36 +57,60 @@ export function FeedTabs({posts, user}:props) {
 
       <TabsContent value="account" style={{width:'100%', marginTop:'30px'}}>
         <Card style={{backgroundColor:'transparent', border:'none'}}>
-            <div className='flex flex-col gap-10 text-light-1' style={{ marginTop: "20px" }}>
-              {posts.posts.length === 0 ? (
-                <p className='no-result'>No posts found</p>
-              ) : (
-
-                <>
-                  {posts.posts.map((post) => (
-                    post.parentId ? null : (
-                      <ThreadCard
-                        key={post._id}
-                        id={post._id}
-                        currentUserId={user?.id || ""}
-                        parentId={post.parentId}
-                        content={post.text}
-                        author={post.author}
-                        community={post.community}
-                        createdAt={post.createdAt}
-                        comments={post.children}
-                        likedBy={post.likedBy}
-                      />
-                    )
-                  ))}
-                </>
-
-              )}
-            </div>
+          <div className='flex flex-col gap-10 text-light-1' style={{ marginTop: "20px" }}>
+            {posts.posts.length === 0 ? (
+              <p className='no-result'>No posts found</p>
+            ) : (
+              <>
+                {posts.posts.map((post) => (
+                  post.parentId ? null : (
+                    <ThreadCard
+                      key={post._id}
+                      id={post._id}
+                      currentUserId={user?.id || ""}
+                      parentId={post.parentId}
+                      content={post.text}
+                      author={post.author}
+                      community={post.community}
+                      createdAt={post.createdAt}
+                      comments={post.children}
+                      likedBy={post.likedBy}
+                    />
+                  )
+                ))}
+              </>
+            )}
+          </div>
         </Card>
       </TabsContent>
 
       <TabsContent value="password">
+        <Card style={{backgroundColor:'transparent', border:'none'}}>
+          <div className='flex flex-col gap-10 text-light-1' style={{ marginTop: "20px" }}>
+            {posts.posts.length === 0 ? (
+              <p className='no-result text-light-1'>Follow someone to see their posts</p>
+            ) : (
+              <>
+                {FollowersPosts.map((post) => (
+                  post.parentId ? null : (
+                    <ThreadCard
+                      key={post._id}
+                      id={post._id}
+                      currentUserId={user?.id || ""}
+                      parentId={post.parentId}
+                      content={post.text}
+                      author={post.author}
+                      community={post.community}
+                      createdAt={post.createdAt}
+                      comments={post.children}
+                      likedBy={post.likedBy}
+                    />
+                  )
+                ))}
+              </>
+            )}
+          </div>
+        </Card>
       </TabsContent>
 
     </Tabs>

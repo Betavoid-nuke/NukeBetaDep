@@ -52,6 +52,7 @@ async function Page({ params }: { params: { id: string } }) {
   //user data
   const user = await currentUser();
   if (!user) return null;
+
   const userInfo = await fetchUser(params.id);
   if (!userInfo?.onboarded) redirect("/onboarding");
   const userData = {
@@ -67,6 +68,7 @@ async function Page({ params }: { params: { id: string } }) {
     followers: userInfo?.followers,
     posts: userInfo?.threads,
   };
+  
 
   //project data
   const usersprojects=[];
@@ -93,7 +95,6 @@ async function Page({ params }: { params: { id: string } }) {
     '/assets/posterPlaceholder/8.jpg',
   ];
   const randomPoster = photoPaths[getRandomNumber()];
-
   const Icon = Icons['arrowRight'];
   
   return (
@@ -117,6 +118,7 @@ async function Page({ params }: { params: { id: string } }) {
         imgUrl={userInfo.image}
         bio={userInfo.bio}
         userid={params.id}
+        userIdForFollow={userInfo.objectId}
       />
 
       <div className="flex flex-row gap-10 mt-5 mb-5" style={{width:'100%', display:'flex', justifyContent:'center'}}>
@@ -159,9 +161,11 @@ async function Page({ params }: { params: { id: string } }) {
       
         <Card x-chunk="dashboard-01-chunk-0 text-light-1" style={{background:'transparent', borderColor:'#1b1b1b', borderRadius:'15px', width:'100%', display:'flex', justifyContent:'center', alignItems:'center', flexWrap:'wrap', flexDirection:'column'}}>
 
-          <Link href={'/projects'} className="hoverEffect_scale" style={{marginLeft:'190px', marginTop:'16px', marginBottom:'-36px'}}>
-            <Icon className={` ml-3 size-5`} color="#8f8f8f" />
-          </Link>
+          {userInfo.id.toString() === user.id.toString() ? (
+            <Link href={'/projects'} className="hoverEffect_scale" style={{marginLeft:'190px', marginTop:'16px', marginBottom:'-36px'}}>
+              <Icon className={` ml-3 size-5`} color="#8f8f8f" />
+            </Link>
+          ):null}
 
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-light-1 text-sm font-medium" style={{borderRadius:'inherit'}}>
@@ -176,9 +180,6 @@ async function Page({ params }: { params: { id: string } }) {
         </Card>
 
         <Card x-chunk="dashboard-01-chunk-0 text-light-1" style={{background:'transparent', borderColor:'#1b1b1b', borderRadius:'15px', width:'100%', display:'flex', justifyContent:'center', alignItems:'center', flexWrap:'wrap', flexDirection:'column'}}>
-          <Link href={'/'} className="hoverEffect_scale" style={{marginLeft:'190px', marginTop:'16px', marginBottom:'-36px'}}>
-            <Icon className={` ml-3 size-5`} color="#8f8f8f" />
-          </Link>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-light-1 text-sm font-medium" style={{borderRadius:'inherit'}}>
               Posts
