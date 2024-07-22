@@ -17,10 +17,11 @@ interface props {
     userImage: string,
     isPro: boolean | undefined
     currentUserIdforfetch: string,
-    useridfordetch: string
+    useridfordetch: string,
+    numoffollowers:string
 }
 
-const UserCard = ({userId, currentUserId, userName, userBio, isPro, userImage, currentUserIdforfetch, useridfordetch}: props) => {
+const UserCard = ({userId, numoffollowers, currentUserId, userName, userBio, isPro, userImage, currentUserIdforfetch, useridfordetch}: props) => {
 
   const followthisuser = async () => {
     await addFollower({ userIdForFollow: currentUserId, followerId: userId });
@@ -72,7 +73,8 @@ const UserCard = ({userId, currentUserId, userName, userBio, isPro, userImage, c
                 </Link>
             
                 <h3 className='mb-4' style={{fontWeight:'bolder', fontSize:'20px', color:'white'}}>{userName}</h3>
-                <p className='mr-2 ml-2 mb-4' style={{color:'gray'}}>{userBio}</p>
+                <p className='mr-2 ml-2' style={{color:'gray', marginBottom:'15px'}}>{userBio}</p>
+                <p className='mr-2 ml-2 mb-4' style={{color:'white', marginBottom:'20px'}}>Followers: {numoffollowers}</p>
 
                 <div className="buttons mb-5">
             

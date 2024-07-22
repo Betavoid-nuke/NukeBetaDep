@@ -1,6 +1,4 @@
 1. unfollow button
-4. number of followers on the user cards
-5. followers feed for the home to show posts from the people user follows
 6. a popup to show followers and following on the profile
 
 

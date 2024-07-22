@@ -17,7 +17,7 @@ const Users = async () => {
   
   //getting all the users
   const response: { users: any[]; isNext: boolean; } = await fetchUsers({userId:userInfo._id});
-
+  
   return (
     <div className="grid-container ml-20">
       {response.users.map((user: any) =>
@@ -32,6 +32,7 @@ const Users = async () => {
             currentUserId={userInfo._id} 
             currentUserIdforfetch={cuser.id} 
             useridfordetch={user.id} 
+            numoffollowers={user.followers.length}
           />
         ) : null
       )}
